@@ -1,18 +1,15 @@
 import React, { Component } from 'react';
-import { Provider } from 'react-redux'
-import store from './store'
-import ScoreCardConnector from './ ScoreCardConnector'
+import GolfRoundConnector from './GolfRoundConnector'
 import './App.css';
 
 class App extends Component {
   render() {
     return (
-      <Provider store={store}>
+
         <div className="App">
-          <ScoreCardConnector />
+          <GolfRoundConnector />
         </div>
-      </Provider>
-    );
+    )
   }
 }
 
