@@ -12,7 +12,8 @@ const defaultState = {
     currentHole: {},
     currentPlayers: [],
     currentCourseScores: [],
-    currentHoleScores: []
+    currentHoleScores: [],
+    searchTerm: ''
 }
 
 // action types
@@ -47,6 +48,9 @@ const UPDATE_COURSE_SCORE = {
 }
 const UPDATE_HOLE_SCORE = {
     type: 'UPDATE_HOLE_SCORE'
+}
+const UPDATE_SEARCH_TERM = {
+    type: 'UPDATE_SEARCH_TERM'
 }
 // Delete
 const DELETE_COURSE = {
@@ -166,6 +170,12 @@ export const updateHoleScore = ({id, course_score_id, hole_id, score}) => {
         }
     }
 }
+export const updateSearchTerm = ({updatedSearchTerm}) => {
+    return {
+        ...UPDATE_SEARCH_TERM,
+        updatedSearchTerm
+    }
+}
 // Delete
 export const deleteCourse = ({id, name}) => {
     return {
@@ -260,9 +270,81 @@ const scorecard = (state=defaultState, action) => {
             ]
         }
         // Update
-
+        case UPDATE_COURSE.type:
+        return {
+            courses: state.courses.map(course => {
+                if (course.id === action.updatedCourse.id) {
+                    return action.updatedCourse
+                } else {
+                    return course
+                }
+            })
+        }
+        case UPDATE_HOLE.type:
+        return {
+            holes: state.holes.map(hole => {
+                if (hole.id === action.updatedHole.id) {
+                    return action.updatedHole
+                } else {
+                    return hole
+                }
+            })
+        }
+        case UPDATE_PLAYER.type:
+        return {
+            players: state.players.map(player => {
+                if (player.id === action.updatedPlayer.id) {
+                    return action.updatedPlayer
+                } else {
+                    return player
+                }
+            })
+        }
+        case UPDATE_COURSE_SCORE.type:
+        return {
+            courseScores: state.courseScores.map(courseScore => {
+                if (courseScore.id === action.updatedCourseScore.id) {
+                    return action.updatedCourseScore
+                } else {
+                    return courseScore
+                }
+            })
+        }
+        case UPDATE_HOLE_SCORE.type:
+        return {
+            holeScores: state.holeScores.map(holeScore => {
+                if (holeScore.id === action.updatedHoleScore.id) {
+                    return action.updatedHoleScore
+                } else {
+                    return holeScore
+                }
+            })
+        }
+        case UPDATE_SEARCH_TERM.type:
+        return {
+            searchTerm: action.updatedSearchTerm
+        }
         // Delete
-
+        case DELETE_COURSE.type:
+        return {
+            courses: state.courses.filter(course => course.id !== action.courseToDelete.id)
+        }
+        case DELETE_HOLE.type:
+        return {
+            holes: state.holes.filter(hole => hole.id !== action.holeToDelete.id)
+        }
+        case DELETE_PLAYER.type:
+        return {
+            players: state.players.filter(player => player.id !== action.playerToDelete.id)
+        }
+        case DELETE_COURSE_SCORE.type:
+        return {
+            courseScores: state.courseScores.filter(courseScore => courseScore.id !== action.courseScoreToDelete.id)
+        }
+        case DELETE_HOLE_SCORE.type:
+        return {
+            holeScores: state.holeScores.filter(holeScore => holeScore.id !== action.holeScoreToDelete.id)
+        }
         default:
         return state
     }
