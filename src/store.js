@@ -3,9 +3,9 @@ import uuid from 'uuid/v4'
 
 // set up default state
 const defaultState = {
-    courses: [],
+    courses: [{id: 1, name: 'Apalachee River Club'}],
     holes: [],
-    players: [],
+    players: [{id: 2, name: 'Collin'}],
     courseScores: [],
     holeScores: [],
     currentCourse: {},
