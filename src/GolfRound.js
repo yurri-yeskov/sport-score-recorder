@@ -1,13 +1,11 @@
 import React from 'react'
 import GolfRoundForm from './GolfRoundForm'
-import GolfSearchPage from './GolfSearchPage'
 import GolfScoreCard from './GolfScoreCard'
 
-export default function ScoreCard(props) {
+export default function GolfRound(props) {
     return (
-        <div className="ScoreCard">
+        <div className="GolfRound">
             <GolfRoundForm {...props}/>
-            <GolfSearchPage {...props}/>
             <GolfScoreCard {...props}/>
         </div>
     )

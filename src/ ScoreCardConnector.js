@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import * as actions from './store'
-import ScoreCard from './ScoreCard'
+import GolfRound from './GolfRound'
 
 const mapStateToProps = (state) => {
     return state
@@ -62,4 +62,4 @@ const mapDispatchToProps = (dispatch) => {
 
 const connector = connect(mapStateToProps, mapDispatchToProps)
 
-export default connector(ScoreCard)
+export default connector(GolfRound)
