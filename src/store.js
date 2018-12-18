@@ -3,17 +3,17 @@ import uuid from 'uuid/v4'
 
 // set up default state
 const defaultState = {
-    courses: [{id: 1, name: 'Apalachee River Club'}],
-    holes: [],
-    players: [{id: 2, name: 'Collin'}],
-    courseScores: [],
-    holeScores: [],
-    currentCourse: {},
-    currentHole: {},
-    currentPlayers: [],
-    currentCourseScores: [],
-    currentHoleScores: [],
-    searchTerm: ''
+    courses: [{id: 1, name: 'Golf Course'}], // all the courses
+    holes: [], // all the holes
+    players: [{id: 2, name: 'Player 1'}], // all the players
+    courseScores: [], // all the scores
+    holeScores: [], // all the hole scores
+    currentCourse: {id: 1, name: 'Golf Course'}, // the current course
+    // currentHole: {},
+    currentPlayers: [{id: 2, name: 'Player 1'}], // the current players
+    currentCourseScores: [], // the current scores
+    // currentHoleScores: [], 
+    // searchTerm: ''
 }
 
 // action types
@@ -80,12 +80,13 @@ export const addCourse = ({name}) => {
         }
     }
 }
-export const addHole = ({course_id, par}) => {
+export const addHole = ({course_id, number, par}) => {
     return {
         ...ADD_HOLE,
         newHole: {
             id: uuid(),
             course_id,
+            number,
             par
         }
     }
@@ -130,12 +131,13 @@ export const updateCourse = ({id, name}) => {
         }
     }
 }
-export const updateHole = ({id, course_id, par}) => {
+export const updateHole = ({id, course_id, number, par}) => {
     return {
         ...UPDATE_HOLE,
         updatedHole: {
             id,
             course_id,
+            number,
             par
         }
     }
@@ -186,12 +188,13 @@ export const deleteCourse = ({id, name}) => {
         }
     }
 }
-export const deleteHole = ({id, course_id, par}) => {
+export const deleteHole = ({id, course_id, number, par}) => {
     return {
         ...DELETE_HOLE,
         holeToDelete: {
             id,
             course_id,
+            number,
             par
         }
     }
@@ -236,6 +239,7 @@ const scorecard = (state=defaultState, action) => {
         // Create
         case ADD_COURSE.type:
         return {
+            ...state,
             courses: [
                 ...state.courses,
                 action.newCourse
@@ -243,6 +247,7 @@ const scorecard = (state=defaultState, action) => {
         }
         case ADD_HOLE.type:
         return {
+            ...state,
             holes: [
                 ...state.holes,
                 action.newHole
@@ -250,6 +255,7 @@ const scorecard = (state=defaultState, action) => {
         }
         case ADD_PLAYER.type:
         return {
+            ...state,
             players: [
                 ...state.players,
                 action.newPlayer
@@ -257,6 +263,7 @@ const scorecard = (state=defaultState, action) => {
         }
         case ADD_COURSE_SCORE.type:
         return {
+            ...state,
             courseScores: [
                 ...state.courseScores,
                 action.newCourseScore
@@ -264,6 +271,7 @@ const scorecard = (state=defaultState, action) => {
         }
         case ADD_HOLE_SCORE.type:
         return {
+            ...state,
             holeScores: [
                 ...state.holeScores,
                 action.newHoleScore
@@ -272,6 +280,7 @@ const scorecard = (state=defaultState, action) => {
         // Update
         case UPDATE_COURSE.type:
         return {
+            ...state,
             courses: state.courses.map(course => {
                 if (course.id === action.updatedCourse.id) {
                     return action.updatedCourse
@@ -282,6 +291,7 @@ const scorecard = (state=defaultState, action) => {
         }
         case UPDATE_HOLE.type:
         return {
+            ...state,
             holes: state.holes.map(hole => {
                 if (hole.id === action.updatedHole.id) {
                     return action.updatedHole
@@ -292,6 +302,7 @@ const scorecard = (state=defaultState, action) => {
         }
         case UPDATE_PLAYER.type:
         return {
+            ...state,
             players: state.players.map(player => {
                 if (player.id === action.updatedPlayer.id) {
                     return action.updatedPlayer
@@ -302,6 +313,7 @@ const scorecard = (state=defaultState, action) => {
         }
         case UPDATE_COURSE_SCORE.type:
         return {
+            ...state,
             courseScores: state.courseScores.map(courseScore => {
                 if (courseScore.id === action.updatedCourseScore.id) {
                     return action.updatedCourseScore
@@ -312,6 +324,7 @@ const scorecard = (state=defaultState, action) => {
         }
         case UPDATE_HOLE_SCORE.type:
         return {
+            ...state,
             holeScores: state.holeScores.map(holeScore => {
                 if (holeScore.id === action.updatedHoleScore.id) {
                     return action.updatedHoleScore
@@ -322,27 +335,33 @@ const scorecard = (state=defaultState, action) => {
         }
         case UPDATE_SEARCH_TERM.type:
         return {
+            ...state,
             searchTerm: action.updatedSearchTerm
         }
         // Delete
         case DELETE_COURSE.type:
         return {
+            ...state,
             courses: state.courses.filter(course => course.id !== action.courseToDelete.id)
         }
         case DELETE_HOLE.type:
         return {
+            ...state,
             holes: state.holes.filter(hole => hole.id !== action.holeToDelete.id)
         }
         case DELETE_PLAYER.type:
         return {
+            ...state,
             players: state.players.filter(player => player.id !== action.playerToDelete.id)
         }
         case DELETE_COURSE_SCORE.type:
         return {
+            ...state,
             courseScores: state.courseScores.filter(courseScore => courseScore.id !== action.courseScoreToDelete.id)
         }
         case DELETE_HOLE_SCORE.type:
         return {
+            ...state,
             holeScores: state.holeScores.filter(holeScore => holeScore.id !== action.holeScoreToDelete.id)
         }
         default:
