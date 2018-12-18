@@ -8,6 +8,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
+        // Create
         addCourse: (course) => {
             dispatch(actions.addCourse(course))
         },
@@ -17,15 +18,16 @@ const mapDispatchToProps = (dispatch) => {
         addPlayer: (player) => {
             dispatch(actions.addPlayer(player))
         },
-        addCourse: (course) => {
-            dispatch(actions.addCourse(course))
-        },
         addCourseScore: (courseScore) => {
             dispatch(actions.addCourseScore(courseScore))
         },
         addHoleScore: (holeScore) => {
             dispatch(actions.addHoleScore(holeScore))
         }
+        // Retreive
+        // Update
+        
+        // Delete
     }
 }
 

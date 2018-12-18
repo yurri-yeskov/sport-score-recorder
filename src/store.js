@@ -4,18 +4,19 @@ import uuid from 'uuid/v4'
 // set up default state
 const defaultState = {
     courses: [],
-    players: [],
     holes: [],
+    players: [],
     courseScores: [],
     holeScores: [],
     currentCourse: {},
-    currentPlayers: [],
     currentHole: {},
+    currentPlayers: [],
     currentCourseScores: [],
     currentHoleScores: []
 }
 
 // action types
+// Create
 const ADD_COURSE = {
     type: 'ADD_COURSE'
 }
@@ -31,8 +32,41 @@ const ADD_COURSE_SCORE = {
 const ADD_HOLE_SCORE = {
     type: 'ADD_HOLE_SCORE'
 }
+// Update
+const UPDATE_COURSE = {
+    type: 'UPDATE_COURSE'
+}
+const UPDATE_HOLE = {
+    type: 'UPDATE_HOLE'
+}
+const UPDATE_PLAYER = {
+    type: 'UPDATE_PLAYER'
+}
+const UPDATE_COURSE_SCORE = {
+    type: 'UPDATE_COURSE_SCORE'
+}
+const UPDATE_HOLE_SCORE = {
+    type: 'UPDATE_HOLE_SCORE'
+}
+// Delete
+const DELETE_COURSE = {
+    type: 'DELETE_COURSE'
+}
+const DELETE_HOLE = {
+    type: 'DELETE_HOLE'
+}
+const DELETE_PLAYER = {
+    type: 'DELETE_PLAYER'
+}
+const DELETE_COURSE_SCORE = {
+    type: 'DELETE_COURSE_SCORE'
+}
+const DELETE_HOLE_SCORE = {
+    type: 'DELETE_HOLE_SCORE'
+}
 
 // action methods
+// Create
 export const addCourse = ({name}) => {
     return {
         ...ADD_COURSE,
@@ -82,15 +116,114 @@ export const addHoleScore = ({course_score_id, hole_id, score}) => {
         }
     }
 }
+// Update
+export const updateCourse = ({id, name}) => {
+    return {
+        ...UPDATE_COURSE,
+        updatedCourse: {
+            id,
+            name
+        }
+    }
+}
+export const updateHole = ({id, course_id, par}) => {
+    return {
+        ...UPDATE_HOLE,
+        updatedHole: {
+            id,
+            course_id,
+            par
+        }
+    }
+}
+export const updatePlayer = ({id, name}) => {
+    return {
+        ...UPDATE_PLAYER,
+        updatedPlayer: {
+            id,
+            name
+        }
+    }
+}
+export const updateCourseScore = ({id, course_id, player_id}) => {
+    return {
+        ...UPDATE_COURSE_SCORE,
+        updatedCourseScore: {
+            id,
+            course_id,
+            player_id
+        }
+    }
+}
+export const updateHoleScore = ({id, course_score_id, hole_id, score}) => {
+    return {
+        ...UPDATE_HOLE_SCORE,
+        updatedHoleScore: {
+            id,
+            course_score_id,
+            hole_id,
+            score
+        }
+    }
+}
+// Delete
+export const deleteCourse = ({id, name}) => {
+    return {
+        ...DELETE_COURSE,
+        courseToDelete: {
+            id,
+            name
+        }
+    }
+}
+export const deleteHole = ({id, course_id, par}) => {
+    return {
+        ...DELETE_HOLE,
+        holeToDelete: {
+            id,
+            course_id,
+            par
+        }
+    }
+}
+export const deletePlayer = ({id, name}) => {
+    return {
+        ...DELETE_PLAYER,
+        playerToDelete: {
+            id,
+            name
+        }
+    }
+}
+export const deleteCourseScore = ({id, course_id, player_id}) => {
+    return {
+        ...DELETE_COURSE_SCORE,
+        courseScoreToDelete: {
+            id,
+            course_id,
+            player_id
+        }
+    }
+}
+export const deleteHoleScore = ({id, course_score_id, hole_id, score}) => {
+    return {
+        ...DELETE_HOLE_SCORE,
+        holeScoreToDelete: {
+            id,
+            course_score_id,
+            hole_id,
+            score
+        }
+    }
+}
 
 // reducer
-
 const scorecard = (state=defaultState, action) => {
     if (!action) {
         return state
     }
     switch (action.type){
-
+        // Create
         case ADD_COURSE.type:
         return {
             courses: [
@@ -126,6 +259,10 @@ const scorecard = (state=defaultState, action) => {
                 action.newHoleScore
             ]
         }
+        // Update
+
+        // Delete
+
         default:
         return state
     }
