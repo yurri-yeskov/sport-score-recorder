@@ -23,11 +23,40 @@ const mapDispatchToProps = (dispatch) => {
         },
         addHoleScore: (holeScore) => {
             dispatch(actions.addHoleScore(holeScore))
-        }
+        },
         // Retreive
         // Update
-        
+        updateCourse: (course) => {
+            dispatch(actions.updateCourse(course))
+        },
+        updateHole: (hole) => {
+            dispatch(actions.updateHole(hole))
+        },
+        updatePlayer: (player) => {
+            dispatch(actions.updatePlayer(player))
+        },
+        updateCourseScore: (courseScore) => {
+            dispatch(actions.updateCourseScore(courseScore))
+        },
+        updateHoleScore: (holeScore) => {
+            dispatch(actions.updateHoleScore(holeScore))
+        },
         // Delete
+        deleteCourse: (course) => {
+            dispatch(actions.deleteCourse(course))
+        },
+        deleteHole: (hole) => {
+            dispatch(actions.deleteHole(hole))
+        },
+        deletePlayer: (player) => {
+            dispatch(actions.deletePlayer(player))
+        },
+        deleteCourseScore: (courseScore) => {
+            dispatch(actions.deleteCourseScore(courseScore))
+        },
+        deleteHoleScore: (holeScore) => {
+            dispatch(actions.deleteHoleScore(holeScore))
+        }
     }
 }
 
