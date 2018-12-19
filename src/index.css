@@ -49,21 +49,51 @@ html, body {
 .playerScores {
   flex: 1;
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
 }
 
 .playerScores > * {
   border: solid black 5px;
+  justify-content: space-around;
+}
+
+.playerScores > *  {
+  border: solid black 1px;
+}
+
+.scoreCardHeaders {
+  display: flex;
+}
+
+.scoreCardScores {
   flex: 1;
   display: flex;
   flex-direction: column;
 }
 
-.playerScores > * > h4:first-child {
-  border-bottom: solid black 5px;
+.scoreCardHole {
+  flex: 1;
+  display: flex;
+  justify-content: space-around;
 }
 
-.playerScores > * > h6 {
+.scoreCardHole > h6 {
+  display: inherit;
+  align-items: center;
+  justify-content: center;
+}
+
+.scoreCardTotals {
+  display: flex;
+  flex-direction: column;
+}
+
+.scoreCardTotalsRow {
+  display: flex;
+  justify-content: space-around;
+}
+
+.scoreCardHole > *, .scoreCardTotalsRow > * {
   flex: 1;
-  border-bottom: solid black 1px;
+  border: solid black 1px;
 }
