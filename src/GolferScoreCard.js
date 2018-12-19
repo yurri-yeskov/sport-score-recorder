@@ -29,9 +29,18 @@ export default function GolferScoreCard(props) {
                     })}
                 </div>
                 <div className='scoreCardTotals'>
-                    <h6>IN</h6>
-                    <h6>OUT</h6>
-                    <h6>TOT</h6>
+                    <div className='scoreCardTotalsHeaders'>
+                        <h6>IN</h6>
+                        <h6>OUT</h6>
+                        <h6>TOT</h6>
+                    </div>
+                    <div className='scoreCardTotalsValues'>
+                        <h6>{playerHoles.reduce((prevHole, currHole) => {
+                            return prevHole.par ? prevHole.par + currHole.par : prevHole + currHole.par
+                        })}</h6>
+                        <h6>{}</h6>
+                        <h6>{}</h6>
+                    </div>
                 </div>
             </div>
         </div>

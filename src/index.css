@@ -51,7 +51,6 @@ html, body {
 
 .playerScores > * {
   border: solid black 5px;
-  display: flex;
   justify-content: space-around;
 }
 
@@ -65,4 +64,9 @@ html, body {
 
 .scoreCardScores {
   flex: 1;
+  display: flex;
+}
+
+.scoreCardTotalsHeaders {
+  display: flex;
 }
