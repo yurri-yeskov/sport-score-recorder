@@ -1,7 +1,6 @@
 import React from 'react'
 import GolferScoreCardHeader from './GolferScoreCardHeader'
 import GolferScoreCardScores from './GolferScoreCardScores'
-import GolferScoreCardTotals from './GolferScoreCardTotals';
 
 export default function GolfScoreCard(props) {
     const {player, holes, currentCourse, currentCourseScores, holeScores} = props
@@ -10,12 +9,8 @@ export default function GolfScoreCard(props) {
     const playerHoleScores = holeScores.filter(holeScore => holeScore.course_score_id === playerCourseScore.id)
     return (
         <div className='GolfScoreCard'>
-            <h1>{player.name}</h1>
-            <div className='playerScores'>
-                <GolferScoreCardHeader {...props} />
-                <GolferScoreCardScores {...props} playerHoles={playerHoles} playerHoleScores={playerHoleScores} />
-                <GolferScoreCardTotals {...props} playerHoles={playerHoles} playerHoleScores={playerHoleScores} />
-            </div>
+            <GolferScoreCardHeader {...props} />
+            <GolferScoreCardScores {...props} playerHoles={playerHoles} playerHoleScores={playerHoleScores}/>
         </div>
     )
 }
