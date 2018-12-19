@@ -36,14 +36,14 @@ export default function GolferScoreCard(props) {
                                     <h6>{hole.number}</h6>
                                 </Link>
                                 <div className='scoreCardHolePar'>
-                                    <Route path={`/editPar/${hole.id}`} component={() => <h6> - </h6>}/>
+                                    <Route path={`/:path?(.*editPar.*)${hole.id}`} component={() => <h6> - </h6>}/>
                                     <h6>{hole.par}</h6>
-                                    <Route path={`/editPar/${hole.id}`} component={() => <h6> + </h6>}/>
+                                    <Route path={`/:path?(.*editPar.*)${hole.id}`} component={() => <h6> + </h6>}/>
                                 </div>
                                 <div className='scoreCardPlayerHoleShots'>
-                                    <Route path={`/editShots/${hole.id}`} component={() => <h6> - </h6>}/>
+                                    <Route path={`/:path?(.*editShots.*)${hole.id}`} component={() => <h6> - </h6>}/>
                                     <h6>{phs.shots}</h6>
-                                    <Route  path={`/editShots/${hole.id}`} component={() => <h6> + </h6>}/>
+                                    <Route path={`/:path?(.*editShots.*)${hole.id}`} component={() => <h6> + </h6>}/>
                                 </div>
                                 <h6>{playerScore}</h6>
                             </div>

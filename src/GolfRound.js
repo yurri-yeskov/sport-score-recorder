@@ -14,7 +14,7 @@ export default function GolfRound(props) {
             /> */}
             <Route
                 // path='/play'
-                path='/'
+                path='/:filter?'
                 render={routeProps => <GolfScoreCard {...props} {...routeProps}/>}
             />
         </div>

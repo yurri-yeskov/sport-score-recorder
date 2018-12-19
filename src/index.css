@@ -83,6 +83,11 @@ html, body {
   justify-content: center;
 }
 
+.scoreCardHolePar, .scoreCardPlayerHoleShots {
+  display: flex;
+  justify-content: space-evenly;
+}
+
 .scoreCardTotals {
   display: flex;
   flex-direction: column;
