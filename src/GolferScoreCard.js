@@ -6,16 +6,13 @@ export default function GolferScoreCard(props) {
     const playerHoleScores = props.holeScores.filter(holeScore => holeScore.course_score_id === playerCourseScore.id)
     return (
         <div className='GolferScoreCard'>
+            <h1>{props.player.name}</h1>
             <div className='playerScores'>
-                <h1>{props.player.name}</h1>
                 <div className='scoreCardHeaders'>
-                    <h4>Hole #</h4>
-                    <h4>Par</h4>
-                    <h4>Shots</h4>
-                    <h4>Score</h4>
-                    <h6>IN</h6>
-                    <h6>OUT</h6>
-                    <h6>TOT</h6>
+                    <h6>Hole #</h6>
+                    <h6>Par</h6>
+                    <h6>Shots</h6>
+                    <h6>Score</h6>
                 </div>
                 <div className='scoreCardScores'>
                     {playerHoles.map(hole => {
@@ -32,6 +29,9 @@ export default function GolferScoreCard(props) {
                     })}
                 </div>
                 <div className='scoreCardTotals'>
+                    <h6>IN</h6>
+                    <h6>OUT</h6>
+                    <h6>TOT</h6>
                 </div>
             </div>
         </div>

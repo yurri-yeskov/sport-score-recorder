@@ -42,28 +42,27 @@ html, body {
 
 .GolferScoreCard {
   height: 100%;
-  display: flex;
-  flex-direction: column;
 }
 
 .playerScores {
   flex: 1;
   display: flex;
-  justify-content: space-around;
 }
 
 .playerScores > * {
   border: solid black 5px;
-  flex: 1;
   display: flex;
+  justify-content: space-around;
+}
+
+.playerScores > *  {
+  border: solid black 1px;
+}
+
+.scoreCardHeaders {
   flex-direction: column;
 }
 
-.playerScores > * > h4:first-child {
-  border-bottom: solid black 5px;
-}
-
-.playerScores > * > h6 {
+.scoreCardScores {
   flex: 1;
-  border-bottom: solid black 1px;
 }
