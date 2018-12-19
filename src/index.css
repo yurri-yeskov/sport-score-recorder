@@ -32,15 +32,15 @@ html, body {
   height: 100%;
 }
 
+.GolfClubHouse {
+  height: 100%;
+}
+
 .GolfRound {
   height: 100%;
 }
 
 .GolfScoreCard {
-  height: 100%;
-}
-
-.GolferScoreCard {
   height: 100%;
   display: flex;
   flex-direction: column;

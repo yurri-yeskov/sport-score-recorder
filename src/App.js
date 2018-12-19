@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import GolfRoundConnector from './GolfRoundConnector'
+import GolfClubHouseConnector from './GolfClubHouseConnector'
 import './App.css';
 
 class App extends Component {
   render() {
     return (
         <div className="App">
-          <GolfRoundConnector />
+          <GolfClubHouseConnector />
         </div>
     )
   }
