@@ -71,13 +71,13 @@ html, body {
   flex-direction: column;
 }
 
-.scoreCardHole {
+.GolferScoreCardHole {
   flex: 1;
   display: flex;
   justify-content: space-around;
 }
 
-.scoreCardHole > * {
+.GolferScoreCardHole > * {
   display: inherit;
   align-items: center;
   justify-content: center;
