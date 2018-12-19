@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route, Link } from 'react-router-dom'
-import GolfIncrementShots from './GolfIncrementShots'
+import GolfUpdateShots from './GolfUpdateShots'
 
 export default function GolferScoreCard(props) {
     const {player, holes, currentCourse, currentCourseScores, holeScores} = props
@@ -39,7 +39,8 @@ export default function GolferScoreCard(props) {
                                 <div className='scoreCardHolePar'>
                                     <Route path={`/:path?(.*editPar.*)${hole.id}`} component={() => <h6> - </h6>}/>
                                     <h6>{hole.par}</h6>
-                                    <Route path={`/:path?(.*editPar.*)${hole.id}`} render={routeProps => <GolfIncrementShots {...props} {...routeProps}/>}/>
+                                    <Route path={`/:path?(.*editPar.*)${hole.id}`} 
+                                    render={() => <GolfUpdateShots updateCurrentHoleScore={props.updateCurrentHoleScore} phs={phs} />}/>
                                 </div>
                                 <div className='scoreCardPlayerHoleShots'>
                                     <Route path={`/:path?(.*editShots.*)${hole.id}`} component={() => <h6> - </h6>}/>
