@@ -27,7 +27,24 @@ const defaultState = {
     players: [{id: 2, name: 'Player 1'}], // all the players
     courseScores: [{id: 21, course_id: 1, player_id: 2}], // all the scores
     holeScores: [
-        {id: 22, course_score_id: 21, hole_id: 3, shots: 3},
+        {id: 22, course_score_id: 21, hole_id: 3, shots: 4},
+        {id: 23, course_score_id: 21, hole_id: 4, shots: 3},
+        {id: 24, course_score_id: 21, hole_id: 5, shots: 5},
+        {id: 25, course_score_id: 21, hole_id: 6, shots: 3},
+        {id: 26, course_score_id: 21, hole_id: 7, shots: 4},
+        {id: 27, course_score_id: 21, hole_id: 8, shots: 5},
+        {id: 28, course_score_id: 21, hole_id: 9, shots: 3},
+        {id: 29, course_score_id: 21, hole_id: 10, shots: 5},
+        {id: 30, course_score_id: 21, hole_id: 11, shots: 4},
+        {id: 31, course_score_id: 21, hole_id: 12, shots: 4},
+        {id: 32, course_score_id: 21, hole_id: 13, shots: 3},
+        {id: 33, course_score_id: 21, hole_id: 14, shots: 5},
+        {id: 34, course_score_id: 21, hole_id: 15, shots: 6},
+        {id: 35, course_score_id: 21, hole_id: 16, shots: 5},
+        {id: 36, course_score_id: 21, hole_id: 17, shots: 4},
+        {id: 37, course_score_id: 21, hole_id: 18, shots: 3},
+        {id: 38, course_score_id: 21, hole_id: 19, shots: 4},
+        {id: 39, course_score_id: 21, hole_id: 20, shots: 4},
     ], // all the hole scores
     currentCourse: {id: 1, name: 'Golf Course'}, // the current course
     // currentHole: {},

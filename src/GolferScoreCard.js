@@ -4,7 +4,6 @@ export default function GolferScoreCard(props) {
     const playerHoles = props.holes.filter(hole => hole.course_id === props.currentCourse.id)
     const playerCourseScore = props.currentCourseScores.find(ccs => ccs.player_id === props.player.id)
     const playerHoleScores = props.holeScores.filter(holeScore => holeScore.course_score_id === playerCourseScore.id)
-    console.log(playerCourseScore, playerHoleScores)
     return (
         <div className='GolferScoreCard'>
             <h1>{props.player.name}</h1>
