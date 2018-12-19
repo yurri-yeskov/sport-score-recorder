@@ -42,9 +42,12 @@ html, body {
 
 .GolferScoreCard {
   height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .playerScores {
+  flex: 1;
   display: flex;
   flex-direction: column;
 }
@@ -69,8 +72,15 @@ html, body {
 }
 
 .scoreCardHole {
+  flex: 1;
   display: flex;
   justify-content: space-around;
+}
+
+.scoreCardHole > h6 {
+  display: inherit;
+  align-items: center;
+  justify-content: center;
 }
 
 .scoreCardTotals {
@@ -81,4 +91,9 @@ html, body {
 .scoreCardTotalsRow {
   display: flex;
   justify-content: space-around;
+}
+
+.scoreCardHole > *, .scoreCardTotalsRow > * {
+  flex: 1;
+  border: solid black 1px;
 }
