@@ -1,6 +1,9 @@
 import React from 'react'
 import { Route, Link } from 'react-router-dom'
-import GolfUpdateShots from './GolfUpdateShots'
+import GolfIncrementShots from './GolfIncrementShots'
+import GolfDecrementShots from './GolfDecrementShots'
+import GolfIncrementPar from './GolfIncrementPar'
+import GolfDecrementPar from './GolfDecrementPar'
 
 export default function GolferScoreCard(props) {
     const {player, holes, currentCourse, currentCourseScores, holeScores} = props
@@ -37,16 +40,19 @@ export default function GolferScoreCard(props) {
                                     <h6>{hole.number}</h6>
                                 </Link>
                                 <div className='scoreCardHolePar'>
-                                    <Route path={`/:path?(.*editPar.*)${hole.id}`} component={() => <h6> - </h6>}/>
+                                    <Route path={`/:path?(.*editPar.*)${hole.id}`} 
+                                    render={() => <GolfDecrementPar updateCurrentHole={props.updateCurrentHole} hole={hole} />}/>
                                     <h6>{hole.par}</h6>
                                     <Route path={`/:path?(.*editPar.*)${hole.id}`} 
-                                    render={() => <GolfUpdateShots updateCurrentHoleScore={props.updateCurrentHoleScore} phs={phs} />}/>
+                                    render={() => <GolfIncrementPar updateCurrentHole={props.updateCurrentHole} hole={hole} />}/>
                                 </div>
                                 <div className='scoreCardPlayerHoleShots'>
-                                    <Route path={`/:path?(.*editShots.*)${hole.id}`} component={() => <h6> - </h6>}/>
+                                    <Route path={`/:path?(.*editShots.*)${hole.id}`} 
+                                    render={() => <GolfDecrementShots updateCurrentHoleScore={props.updateCurrentHoleScore} phs={phs} />}/>
                                     <h6>{phs.shots}</h6>
-                                    <Route path={`/:path?(.*editShots.*)${hole.id}`} component={() => <h6> + </h6>}/>
-                                </div>
+                                    <Route path={`/:path?(.*editShots.*)${hole.id}`} 
+                                    render={() => <GolfIncrementShots updateCurrentHoleScore={props.updateCurrentHoleScore} phs={phs} />}/>
+                                    </div>
                                 <h6>{playerScore}</h6>
                             </div>
                         )
