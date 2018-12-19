@@ -27,7 +27,8 @@ export default function GolferScoreCard(props) {
                     <h6>Score</h6>
                 </div>
                 <div className='scoreCardScores'>
-                    {playerHoles.map(hole => {
+                    {playerHoles.slice(0, 9)
+                    .map(hole => {
                         const phs = playerHoleScores.find(holeScore => holeScore.hole_id === hole.id)
                         return (
                         <GolferScoreCardHole key={phs.id} {...props}
@@ -37,8 +38,6 @@ export default function GolferScoreCard(props) {
                         />
                         )
                     })}
-                </div>
-                <div className='scoreCardTotals'>
                     <div className='scoreCardTotalsRow'>
                         <h6>IN</h6>
                         <h6>{playerHoles.slice(0, 9)
@@ -53,6 +52,17 @@ export default function GolferScoreCard(props) {
                             .map((holeScore, index) => holeScore.shots - playerHoles[index].par)
                             .reduce((prevScore, currScore) => prevScore + currScore)}</h6>
                     </div>
+                    {playerHoles.slice(9, 18)
+                    .map(hole => {
+                        const phs = playerHoleScores.find(holeScore => holeScore.hole_id === hole.id)
+                        return (
+                        <GolferScoreCardHole key={phs.id} {...props}
+                        hole={hole}
+                        phs={phs}
+                        playerScore={phs.shots - playerHoles.find(hole => hole.id === phs.hole_id).par}
+                        />
+                        )
+                    })}
                     <div className='scoreCardTotalsRow'>
                         <h6>OUT</h6>
                         <h6>{playerHoles.slice(9, 18)
@@ -67,6 +77,8 @@ export default function GolferScoreCard(props) {
                             .map((holeScore, index) => holeScore.shots - playerHoles[index].par)
                             .reduce((prevScore, currScore) => prevScore + currScore)}</h6>
                     </div>
+                </div>
+                <div className='scoreCardTotals'>
                     <div className='scoreCardTotalsRow'>
                         <h6>TOT</h6>
                         <h6>{playerHoles.reduce((prevHole, currHole) => {
