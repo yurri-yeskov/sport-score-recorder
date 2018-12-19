@@ -61,11 +61,11 @@ html, body {
   border: solid black 1px;
 }
 
-.scoreCardHeaders {
+.GolferScoreCardHeader {
   display: flex;
 }
 
-.scoreCardScores {
+.GolferScoreCardScores {
   flex: 1;
   display: flex;
   flex-direction: column;
