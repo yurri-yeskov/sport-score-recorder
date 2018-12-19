@@ -11,6 +11,9 @@ export default function GolferScoreCard(props) {
                 <div className='scoreCardHoles'>
                     <h4>Hole #</h4>
                     {playerHoles.map(hole => <h6 key={hole.id}>{hole.number}</h6>)}
+                    <h6>IN</h6>
+                    <h6>OUT</h6>
+                    <h6>TOT</h6>
                 </div>
                 <div className='scoreCardPars'>
                     <h4>Par</h4>
