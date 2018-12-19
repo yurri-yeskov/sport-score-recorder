@@ -16,7 +16,7 @@ export default function GolferScoreCardScoresNineTotals(props) {
         })}</h6>
         <h6>{playerHoleScores.slice(startHoleNum, endHoleNum)
             .map((holeScore, index) => holeScore.shots - playerHoles[index].par)
-            .reduce((prevScore, currScore) => prevScore + currScore)}</h6>
+            .reduce((prevScore, currScore) => prevScore + currScore) || 'E'}</h6>
     </div>
     )
 }

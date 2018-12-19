@@ -12,7 +12,7 @@ export default function GolferScoreCardTotals(props) {
                 return prevHole.shots || prevHole.shots === 0 ? prevHole.shots + currHole.shots : prevHole + currHole.shots
             })}</h6>
             <h6>{playerHoleScores.map((holeScore, index) => holeScore.shots - playerHoles[index].par)
-            .reduce((prevScore, currScore) => prevScore + currScore)}</h6>
+            .reduce((prevScore, currScore) => prevScore + currScore) || 'E'}</h6>
         </div>
     )
 }
