@@ -1,4 +1,5 @@
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 import * as actions from './store'
 import GolfRound from './GolfRound'
 
@@ -41,6 +42,9 @@ const mapDispatchToProps = (dispatch) => {
         updateHoleScore: (holeScore) => {
             dispatch(actions.updateHoleScore(holeScore))
         },
+        updateSearchTerm: (updatedSearchTerm) => {
+            dispatch(actions.updateSearchTerm(updatedSearchTerm))
+        },
         // Delete
         deleteCourse: (course) => {
             dispatch(actions.deleteCourse(course))
@@ -62,4 +66,4 @@ const mapDispatchToProps = (dispatch) => {
 
 const connector = connect(mapStateToProps, mapDispatchToProps)
 
-export default connector(GolfRound)
+export default withRouter(connector(GolfRound))
