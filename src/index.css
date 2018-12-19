@@ -100,17 +100,12 @@ html, body {
   justify-content: space-evenly;
 }
 
-.scoreCardTotals {
-  display: flex;
-  flex-direction: column;
-}
-
-.scoreCardTotalsRow {
+.GolferScoreCardScoresNineTotals, .GolferScoreCardTotals {
   display: flex;
   justify-content: space-around;
 }
 
-.GolferScoreCardHole > *, .scoreCardTotalsRow > * {
+.GolferScoreCardHole > *, .GolferScoreCardTotals > *, .GolferScoreCardScoresNineTotals > * {
   flex: 1;
   border: solid black 1px;
 }

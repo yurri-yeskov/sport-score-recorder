@@ -1,6 +1,7 @@
 import React from 'react'
 import GolferScoreCardHeader from './GolferScoreCardHeader'
 import GolferScoreCardScores from './GolferScoreCardScores'
+import GolferScoreCardTotals from './GolferScoreCardTotals';
 
 export default function GolferScoreCard(props) {
     const {player, holes, currentCourse, currentCourseScores, holeScores} = props
@@ -13,19 +14,7 @@ export default function GolferScoreCard(props) {
             <div className='playerScores'>
                 <GolferScoreCardHeader {...props} />
                 <GolferScoreCardScores {...props} playerHoles={playerHoles} playerHoleScores={playerHoleScores} />
-                <div className='scoreCardTotals'>
-                    <div className='scoreCardTotalsRow'>
-                        <h6>TOT</h6>
-                        <h6>{playerHoles.reduce((prevHole, currHole) => {
-                            return prevHole.par ? prevHole.par + currHole.par : prevHole + currHole.par
-                        })}</h6>
-                        <h6>{playerHoleScores.reduce((prevHole, currHole) => {
-                            return prevHole.shots ? prevHole.shots + currHole.shots : prevHole + currHole.shots
-                        })}</h6>
-                        <h6>{playerHoleScores.map((holeScore, index) => holeScore.shots - playerHoles[index].par)
-                        .reduce((prevScore, currScore) => prevScore + currScore)}</h6>
-                    </div>
-                </div>
+                <GolferScoreCardTotals {...props} playerHoles={playerHoles} playerHoleScores={playerHoleScores} />
             </div>
         </div>
     )
