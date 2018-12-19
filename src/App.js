@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import GolfClubHouseConnector from './GolfClubHouseConnector'
+import GolfClubHouseConnector from './clubhouse/GolfClubHouseConnector'
 import './App.css';
 
 class App extends Component {

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import * as actions from './store'
+import * as actions from '../store'
 import GolfClubHouse from './GolfClubHouse';
 
 const mapStateToProps = (state) => {

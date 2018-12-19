@@ -1,9 +1,9 @@
 import React from 'react'
 import { Route, Link } from 'react-router-dom'
-import GolfIncrementShots from './GolfIncrementShots'
-import GolfDecrementShots from './GolfDecrementShots'
-import GolfIncrementPar from './GolfIncrementPar'
-import GolfDecrementPar from './GolfDecrementPar'
+import GolfIncrementShots from '../actions/GolfIncrementShots'
+import GolfDecrementShots from '../actions/GolfDecrementShots'
+import GolfIncrementPar from '../actions/GolfIncrementPar'
+import GolfDecrementPar from '../actions/GolfDecrementPar'
 
 export default function GolferScoreCardHole({phs, playerScore, location, updateCurrentHole, updateCurrentHoleScore, hole}) {
     return (

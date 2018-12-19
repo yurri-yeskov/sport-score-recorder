@@ -2,7 +2,7 @@ import React from 'react'
 import { Route } from 'react-router-dom'
 // import GolfNav from './GolfNav'
 // import GolfRoundForm from './GolfRoundForm'
-import GolfRound from './GolfRound';
+import GolfRound from '../round/GolfRound';
 
 export default function GolfClubHouse(props) {
     return (

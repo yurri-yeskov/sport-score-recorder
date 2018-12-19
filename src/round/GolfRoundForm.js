@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import GolfSearch from './GolfSearch'
+import GolfSearch from '../GolfSearch'
 
 export default function GolfRoundForm(props) {
     return (
