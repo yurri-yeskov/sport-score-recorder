@@ -29,12 +29,30 @@ export default function GolferScoreCard(props) {
                     })}
                 </div>
                 <div className='scoreCardTotals'>
-                    <div className='scoreCardTotalsHeaders'>
+                    <div className='scoreCardTotalsRow'>
                         <h6>IN</h6>
-                        <h6>OUT</h6>
-                        <h6>TOT</h6>
+                        <h6>{playerHoles.reduce((prevHole, currHole) => {
+                            return prevHole.par ? prevHole.par + currHole.par : prevHole + currHole.par
+                        })}</h6>
+                        <h6>{playerHoleScores.reduce((prevHole, currHole) => {
+                            return prevHole.shots ? prevHole.shots + currHole.shots : prevHole + currHole.shots
+                        })}</h6>
+                        <h6>{playerHoleScores.map((holeScore, index) => holeScore.shots - playerHoles[index].par)
+                        .reduce((prevScore, currScore) => prevScore + currScore)}</h6>
                     </div>
-                    <div className='scoreCardTotalsValues'>
+                    <div className='scoreCardTotalsRow'>
+                        <h6>OUT</h6>
+                        <h6>{playerHoles.reduce((prevHole, currHole) => {
+                            return prevHole.par ? prevHole.par + currHole.par : prevHole + currHole.par
+                        })}</h6>
+                        <h6>{playerHoleScores.reduce((prevHole, currHole) => {
+                            return prevHole.shots ? prevHole.shots + currHole.shots : prevHole + currHole.shots
+                        })}</h6>
+                        <h6>{playerHoleScores.map((holeScore, index) => holeScore.shots - playerHoles[index].par)
+                        .reduce((prevScore, currScore) => prevScore + currScore)}</h6>
+                    </div>
+                    <div className='scoreCardTotalsRow'>
+                        <h6>TOT</h6>
                         <h6>{playerHoles.reduce((prevHole, currHole) => {
                             return prevHole.par ? prevHole.par + currHole.par : prevHole + currHole.par
                         })}</h6>

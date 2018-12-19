@@ -45,8 +45,8 @@ html, body {
 }
 
 .playerScores {
-  flex: 1;
   display: flex;
+  flex-direction: column;
 }
 
 .playerScores > * {
@@ -59,14 +59,26 @@ html, body {
 }
 
 .scoreCardHeaders {
-  flex-direction: column;
+  display: flex;
 }
 
 .scoreCardScores {
   flex: 1;
   display: flex;
+  flex-direction: column;
 }
 
-.scoreCardTotalsHeaders {
+.scoreCardHole {
   display: flex;
+  justify-content: space-around;
+}
+
+.scoreCardTotals {
+  display: flex;
+  flex-direction: column;
+}
+
+.scoreCardTotalsRow {
+  display: flex;
+  justify-content: space-around;
 }
