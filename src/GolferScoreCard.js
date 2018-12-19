@@ -38,8 +38,11 @@ export default function GolferScoreCard(props) {
                         <h6>{playerHoles.reduce((prevHole, currHole) => {
                             return prevHole.par ? prevHole.par + currHole.par : prevHole + currHole.par
                         })}</h6>
-                        <h6>{}</h6>
-                        <h6>{}</h6>
+                        <h6>{playerHoleScores.reduce((prevHole, currHole) => {
+                            return prevHole.shots ? prevHole.shots + currHole.shots : prevHole + currHole.shots
+                        })}</h6>
+                        <h6>{playerHoleScores.map((holeScore, index) => holeScore.shots - playerHoles[index].par)
+                        .reduce((prevScore, currScore) => prevScore + currScore)}</h6>
                     </div>
                 </div>
             </div>
