@@ -624,26 +624,35 @@ const scorecard = (state=defaultState, action) => {
         case UPDATE_CURRENT_PLAYER.type:
         return {
             ...state,
-            currentPlayers: [
-                ...state.currentPlayers,
-                action.updatedCurrentPlayer
-            ]
+            currentPlayers: state.currentPlayers.map(player => {
+                if (player.id === action.updatedCurrentPlayer.id) {
+                    return action.updatedCurrentPlayer
+                } else {
+                    return player
+                }
+            })
         }
         case UPDATE_CURRENT_COURSE_SCORE.type:
         return {
             ...state,
-            currentCourseScores: [
-                ...state.currentCourseScores,
-                action.updatedCurrentCourseScore
-            ]
+            currentCourseScores: state.currentCourseScores.map(score => {
+                if (score.id === action.updatedCurrentCourseScore.id) {
+                    return action.updatedCurrentCourseScore
+                } else {
+                    return score
+                }
+            })
         }
         case UPDATE_CURRENT_HOLE_SCORE.type:
         return {
             ...state,
-            currentHoleScores: [
-                ...state.currentHoleScores,
-                action.updatedCurrentHoleScore
-            ]
+            currentHoleScores: state.currentHoleScores.map(score => {
+                if (score.id === action.updatedCurrentHoleScore.id) {
+                    return action.updatedCurrentHoleScore
+                } else {
+                    return score
+                }
+            }).sort((score1, score2) => score2.number - score1.number)
         }
         // Delete
         case DELETE_COURSE.type:
@@ -674,36 +683,27 @@ const scorecard = (state=defaultState, action) => {
         case DELETE_CURRENT_COURSE.type:
         return {
             ...state,
-            currentCourse: action.deletedCurrentCourse
+            currentCourse: {}
         }
         case DELETE_CURRENT_HOLE.type:
         return {
             ...state,
-            currentHole: action.deletedCurrentHole
+            currentHole: {}
         }
         case DELETE_CURRENT_PLAYER.type:
         return {
             ...state,
-            currentPlayers: [
-                ...state.currentPlayers,
-                action.deletedCurrentPlayer
-            ]
+            currentPlayers: state.currentPlayers.filter(player => player.id !== action.deleteCurrentPlayer.id)
         }
         case DELETE_CURRENT_COURSE_SCORE.type:
         return {
             ...state,
-            currentCourseScores: [
-                ...state.currentCourseScores,
-                action.deletedCurrentCourseScore
-            ]
+            currentCourseScores: state.currentCourseScores.filter(score => score.id !== action.deletedCurrentCourseScore.id)
         }
         case DELETE_CURRENT_HOLE_SCORE.type:
         return {
             ...state,
-            currentHoleScores: [
-                ...state.currentHoleScores,
-                action.deletedCurrentHoleScore
-            ]
+            currentHoleScores: state.currentHoleScores.filter(score => score.id !== action.deletedCurrentHoleScore.id)
         }
         default:
         return state

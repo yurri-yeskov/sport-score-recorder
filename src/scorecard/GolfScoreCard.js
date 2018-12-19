@@ -9,7 +9,7 @@ export default function GolfScoreCard(props) {
     const playerHoleScores = holeScores.filter(holeScore => holeScore.course_score_id === playerCourseScore.id)
     return (
         <div className='GolfScoreCard'>
-            <GolferScoreCardHeader {...props} />
+            <GolferScoreCardHeader {...props} playerHoleScores={playerHoleScores}/>
             <GolferScoreCardScores {...props} playerHoles={playerHoles} playerHoleScores={playerHoleScores}/>
         </div>
     )
