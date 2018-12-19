@@ -47,10 +47,29 @@ const defaultState = {
         {id: 39, course_score_id: 21, hole_id: 20, shots: 4},
     ], // all the hole scores
     currentCourse: {id: 1, name: 'Golf Course'}, // the current course
-    // currentHole: {},
+    currentHole: {id: 12, course_id: 1, number: 10, par: 4},
     currentPlayers: [{id: 2, name: 'Player 1'}], // the current players
     currentCourseScores: [{id: 21, course_id: 1, player_id: 2}], // the current scores
-    // currentHoleScores: [], 
+    currentHoleScores: [
+        {id: 22, course_score_id: 21, hole_id: 3, shots: 4},
+        {id: 23, course_score_id: 21, hole_id: 4, shots: 3},
+        {id: 24, course_score_id: 21, hole_id: 5, shots: 5},
+        {id: 25, course_score_id: 21, hole_id: 6, shots: 3},
+        {id: 26, course_score_id: 21, hole_id: 7, shots: 4},
+        {id: 27, course_score_id: 21, hole_id: 8, shots: 5},
+        {id: 28, course_score_id: 21, hole_id: 9, shots: 3},
+        {id: 29, course_score_id: 21, hole_id: 10, shots: 5},
+        {id: 30, course_score_id: 21, hole_id: 11, shots: 4},
+        {id: 31, course_score_id: 21, hole_id: 12, shots: 4},
+        {id: 32, course_score_id: 21, hole_id: 13, shots: 3},
+        {id: 33, course_score_id: 21, hole_id: 14, shots: 5},
+        {id: 34, course_score_id: 21, hole_id: 15, shots: 6},
+        {id: 35, course_score_id: 21, hole_id: 16, shots: 5},
+        {id: 36, course_score_id: 21, hole_id: 17, shots: 4},
+        {id: 37, course_score_id: 21, hole_id: 18, shots: 3},
+        {id: 38, course_score_id: 21, hole_id: 19, shots: 4},
+        {id: 39, course_score_id: 21, hole_id: 20, shots: 4},
+    ], 
     // searchTerm: ''
 }
 
@@ -71,6 +90,21 @@ const ADD_COURSE_SCORE = {
 const ADD_HOLE_SCORE = {
     type: 'ADD_HOLE_SCORE'
 }
+const ADD_CURRENT_COURSE = {
+    type: 'ADD_CURRENT_COURSE'
+}
+const ADD_CURRENT_HOLE = {
+    type: 'ADD_CURRENT_HOLE'
+}
+const ADD_CURRENT_PLAYER = {
+    type: 'ADD_CURRENT_PLAYER'
+}
+const ADD_CURRENT_COURSE_SCORE = {
+    type: 'ADD_CURRENT_COURSE_SCORE'
+}
+const ADD_CURRENT_HOLE_SCORE = {
+    type: 'ADD_CURRENT_HOLE_SCORE'
+}
 // Update
 const UPDATE_COURSE = {
     type: 'UPDATE_COURSE'
@@ -90,6 +124,21 @@ const UPDATE_HOLE_SCORE = {
 const UPDATE_SEARCH_TERM = {
     type: 'UPDATE_SEARCH_TERM'
 }
+const UPDATE_CURRENT_COURSE = {
+    type: 'UPDATE_CURRENT_COURSE'
+}
+const UPDATE_CURRENT_HOLE = {
+    type: 'UPDATE_CURRENT_HOLE'
+}
+const UPDATE_CURRENT_PLAYER = {
+    type: 'UPDATE_CURRENT_PLAYER'
+}
+const UPDATE_CURRENT_COURSE_SCORE = {
+    type: 'UPDATE_CURRENT_COURSE_SCORE'
+}
+const UPDATE_CURRENT_HOLE_SCORE = {
+    type: 'UPDATE_CURRENT_HOLE_SCORE'
+}
 // Delete
 const DELETE_COURSE = {
     type: 'DELETE_COURSE'
@@ -105,6 +154,21 @@ const DELETE_COURSE_SCORE = {
 }
 const DELETE_HOLE_SCORE = {
     type: 'DELETE_HOLE_SCORE'
+}
+const DELETE_CURRENT_COURSE = {
+    type: 'DELETE_CURRENT_COURSE'
+}
+const DELETE_CURRENT_HOLE = {
+    type: 'DELETE_CURRENT_HOLE'
+}
+const DELETE_CURRENT_PLAYER = {
+    type: 'DELETE_CURRENT_PLAYER'
+}
+const DELETE_CURRENT_COURSE_SCORE = {
+    type: 'DELETE_CURRENT_COURSE_SCORE'
+}
+const DELETE_CURRENT_HOLE_SCORE = {
+    type: 'DELETE_CURRENT_HOLE_SCORE'
 }
 
 // action methods
@@ -153,6 +217,56 @@ export const addHoleScore = ({course_score_id, hole_id, shots}) => {
         ...ADD_HOLE_SCORE,
         newHoleScore: {
             id: uuid(),
+            course_score_id, 
+            hole_id,
+            shots
+        }
+    }
+}
+export const addCurrentCourse = ({id, name}) => {
+    return {
+        ...ADD_CURRENT_COURSE,
+        newCurrentCourse: {
+            id,
+            name
+        }
+    }
+}
+export const addCurrentHole = ({id, course_id, number, par}) => {
+    return {
+        ...ADD_CURRENT_HOLE,
+        newCurrentHole: {
+            id,
+            course_id,
+            number,
+            par
+        }
+    }
+}
+export const addCurrentPlayer = ({id, name}) => {
+    return {
+        ...ADD_CURRENT_PLAYER,
+        newCurrentPlayer: {
+            id,
+            name
+        }
+    }
+}
+export const addCurrentCourseScore = ({id, player_id, course_id}) => {
+    return {
+        ...ADD_CURRENT_COURSE_SCORE,
+        newCurrentCourseScore: {
+            id,
+            player_id,
+            course_id
+        }
+    }
+}
+export const addCurrentHoleScore = ({id, course_score_id, hole_id, shots}) => {
+    return {
+        ...ADD_CURRENT_HOLE_SCORE,
+        newCurrentHoleScore: {
+            id,
             course_score_id, 
             hole_id,
             shots
@@ -210,10 +324,54 @@ export const updateHoleScore = ({id, course_score_id, hole_id, shots}) => {
         }
     }
 }
-export const updateSearchTerm = ({updatedSearchTerm}) => {
+export const updateCurrentCourse = ({id, name}) => {
     return {
-        ...UPDATE_SEARCH_TERM,
-        updatedSearchTerm
+        ...UPDATE_CURRENT_COURSE,
+        updatedCurrentCourse: {
+            id,
+            name
+        }
+    }
+}
+export const updateCurrentHole = ({id, course_id, number, par}) => {
+    return {
+        ...UPDATE_CURRENT_HOLE,
+        updatedCurrentHole: {
+            id,
+            course_id,
+            number,
+            par
+        }
+    }
+}
+export const updateCurrentPlayer = ({id, name}) => {
+    return {
+        ...UPDATE_CURRENT_PLAYER,
+        updatedCurrentPlayer: {
+            id,
+            name
+        }
+    }
+}
+export const updateCurrentCourseScore = ({id, player_id, course_id}) => {
+    return {
+        ...UPDATE_CURRENT_COURSE_SCORE,
+        updatedCurrentCourseScore: {
+            id,
+            player_id,
+            course_id
+        }
+    }
+}
+export const updateCurrentHoleScore = ({id, course_score_id, hole_id, shots}) => {
+    return {
+        ...UPDATE_CURRENT_HOLE_SCORE,
+        updatedCurrentHoleScore: {
+            id,
+            course_score_id, 
+            hole_id,
+            shots
+        }
     }
 }
 // Delete
@@ -267,6 +425,57 @@ export const deleteHoleScore = ({id, course_score_id, hole_id, shots}) => {
         }
     }
 }
+export const deleteCurrentCourse = ({id, name}) => {
+    return {
+        ...DELETE_CURRENT_COURSE,
+        deletedCurrentCourse: {
+            id,
+            name
+        }
+    }
+}
+export const deleteCurrentHole = ({id, course_id, number, par}) => {
+    return {
+        ...DELETE_CURRENT_HOLE,
+        deletedCurrentHole: {
+            id,
+            course_id,
+            number,
+            par
+        }
+    }
+}
+export const deleteCurrentPlayer = ({id, name}) => {
+    return {
+        ...DELETE_CURRENT_PLAYER,
+        deletedCurrentPlayer: {
+            id,
+            name
+        }
+    }
+}
+export const deleteCurrentCourseScore = ({id, player_id, course_id}) => {
+    return {
+        ...DELETE_CURRENT_COURSE_SCORE,
+        deletedCurrentCourseScore: {
+            id,
+            player_id,
+            course_id
+        }
+    }
+}
+export const deleteCurrentHoleScore = ({id, course_score_id, hole_id, shots}) => {
+    return {
+        ...DELETE_CURRENT_HOLE_SCORE,
+        deletedCurrentHoleScore: {
+            id,
+            course_score_id, 
+            hole_id,
+            shots
+        }
+    }
+}
+
 
 // reducer
 const scorecard = (state=defaultState, action) => {
@@ -313,6 +522,40 @@ const scorecard = (state=defaultState, action) => {
             holeScores: [
                 ...state.holeScores,
                 action.newHoleScore
+            ]
+        }
+        case ADD_CURRENT_COURSE.type:
+        return {
+            ...state,
+            currentCourse: action.newCurrentCourse
+        }
+        case ADD_CURRENT_HOLE.type:
+        return {
+            ...state,
+            currentHole: action.newCurrentHole
+        }
+        case ADD_CURRENT_PLAYER.type:
+        return {
+            ...state,
+            currentPlayers: [
+                ...state.currentPlayers,
+                action.newCurrentPlayer
+            ]
+        }
+        case ADD_CURRENT_COURSE_SCORE.type:
+        return {
+            ...state,
+            currentCourseScores: [
+                ...state.currentCourseScores,
+                action.newCurrentCourseScore
+            ]
+        }
+        case ADD_CURRENT_HOLE_SCORE.type:
+        return {
+            ...state,
+            currentHoleScores: [
+                ...state.currentHoleScores,
+                action.newCurrentHoleScore
             ]
         }
         // Update
@@ -371,10 +614,39 @@ const scorecard = (state=defaultState, action) => {
                 }
             })
         }
-        case UPDATE_SEARCH_TERM.type:
+        case UPDATE_CURRENT_COURSE.type:
         return {
             ...state,
-            searchTerm: action.updatedSearchTerm
+            currentCourse: action.updatedCurrentCourse
+        }
+        case UPDATE_CURRENT_HOLE.type:
+        return {
+            ...state,
+            currentHole: action.updatedCurrentHole
+        }
+        case UPDATE_CURRENT_PLAYER.type:
+        return {
+            ...state,
+            currentPlayers: [
+                ...state.currentPlayers,
+                action.updatedCurrentPlayer
+            ]
+        }
+        case UPDATE_CURRENT_COURSE_SCORE.type:
+        return {
+            ...state,
+            currentCourseScores: [
+                ...state.currentCourseScores,
+                action.updatedCurrentCourseScore
+            ]
+        }
+        case UPDATE_CURRENT_HOLE_SCORE.type:
+        return {
+            ...state,
+            currentHoleScores: [
+                ...state.currentHoleScores,
+                action.updatedCurrentHoleScore
+            ]
         }
         // Delete
         case DELETE_COURSE.type:
@@ -401,6 +673,40 @@ const scorecard = (state=defaultState, action) => {
         return {
             ...state,
             holeScores: state.holeScores.filter(holeScore => holeScore.id !== action.holeScoreToDelete.id)
+        }
+        case DELETE_CURRENT_COURSE.type:
+        return {
+            ...state,
+            currentCourse: action.deletedCurrentCourse
+        }
+        case DELETE_CURRENT_HOLE.type:
+        return {
+            ...state,
+            currentHole: action.deletedCurrentHole
+        }
+        case DELETE_CURRENT_PLAYER.type:
+        return {
+            ...state,
+            currentPlayers: [
+                ...state.currentPlayers,
+                action.deletedCurrentPlayer
+            ]
+        }
+        case DELETE_CURRENT_COURSE_SCORE.type:
+        return {
+            ...state,
+            currentCourseScores: [
+                ...state.currentCourseScores,
+                action.deletedCurrentCourseScore
+            ]
+        }
+        case DELETE_CURRENT_HOLE_SCORE.type:
+        return {
+            ...state,
+            currentHoleScores: [
+                ...state.currentHoleScores,
+                action.deletedCurrentHoleScore
+            ]
         }
         default:
         return state
