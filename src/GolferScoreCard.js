@@ -12,10 +12,14 @@ export default function GolferScoreCard(props) {
             <div className='playerScores'>
                 <div className='scoreCardHeaders'>
                     <h6>Hole #</h6>
-                    <Link to={props.location.pathname === `/editPar/` ? `/` : `/editPar/`}>
+                    <Link to={props.location.pathname.includes(`editPar`) ?
+                        `${props.location.pathname.replace(`/editPar/`, '/')}` :
+                        `/editPar${props.location.pathname}`}>
                         <h6>Par</h6>
                     </Link>
-                    <Link to={props.location.pathname === `/editShots/` ? `/` : `/editShots/`}>
+                    <Link to={props.location.pathname.includes(`editShots`) ?
+                        `${props.location.pathname.replace(`/editShots/`, '/')}` :
+                        `/editShots${props.location.pathname}`}>
                         <h6>Shots</h6>
                     </Link>
                     <h6>Score</h6>
@@ -27,19 +31,19 @@ export default function GolferScoreCard(props) {
                         return (
                             <div key={phs.id} className='scoreCardHole'>
                                 <Link to={props.location.pathname.includes(hole.id) ?
-                                    `${props.location.pathname.replace(hole.id, '')}` :
-                                    `${props.location.pathname}${hole.id}`}>
+                                    `${props.location.pathname.replace(`${hole.id}/`, '')}` :
+                                    `${props.location.pathname}${hole.id}/`}>
                                     <h6>{hole.number}</h6>
                                 </Link>
                                 <div className='scoreCardHolePar'>
-                                    <Route exact path={`/editPar/${hole.id}`} component={() => <h6> - </h6>}/>
+                                    <Route path={`/editPar/${hole.id}`} component={() => <h6> - </h6>}/>
                                     <h6>{hole.par}</h6>
-                                    <Route exact path={`/editPar/${hole.id}`} component={() => <h6> + </h6>}/>
+                                    <Route path={`/editPar/${hole.id}`} component={() => <h6> + </h6>}/>
                                 </div>
                                 <div className='scoreCardPlayerHoleShots'>
-                                    <Route exact path={`/editShots/${hole.id}`} component={() => <h6> - </h6>}/>
+                                    <Route path={`/editShots/${hole.id}`} component={() => <h6> - </h6>}/>
                                     <h6>{phs.shots}</h6>
-                                    <Route exact path={`/editShots/${hole.id}`} component={() => <h6> + </h6>}/>
+                                    <Route  path={`/editShots/${hole.id}`} component={() => <h6> + </h6>}/>
                                 </div>
                                 <h6>{playerScore}</h6>
                             </div>
