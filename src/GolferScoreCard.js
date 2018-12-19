@@ -1,12 +1,12 @@
 import React from 'react'
 
-export default function GolferScoreCard(props) {
-    const playerHoles = props.holes.filter(hole => hole.course_id === props.currentCourse.id)
-    const playerCourseScore = props.currentCourseScores.find(ccs => ccs.player_id === props.player.id)
-    const playerHoleScores = props.holeScores.filter(holeScore => holeScore.course_score_id === playerCourseScore.id)
+export default function GolferScoreCard({player, holes, currentCourse, currentCourseScores, holeScores}) {
+    const playerHoles = holes.filter(hole => hole.course_id === currentCourse.id)
+    const playerCourseScore = currentCourseScores.find(ccs => ccs.player_id === player.id)
+    const playerHoleScores = holeScores.filter(holeScore => holeScore.course_score_id === playerCourseScore.id)
     return (
         <div className='GolferScoreCard'>
-            <h1>{props.player.name}</h1>
+            <h1>{player.name}</h1>
             <div className='playerScores'>
                 <div className='scoreCardHeaders'>
                     <h6>Hole #</h6>
