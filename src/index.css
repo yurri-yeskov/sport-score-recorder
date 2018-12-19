@@ -98,7 +98,7 @@ html, body {
   justify-content: space-around;
 }
 
-.scoreCardHole > *, .scoreCardTotalsRow > * {
+.GolferScoreCardHole > *, .scoreCardTotalsRow > * {
   flex: 1;
   border: solid black 1px;
 }
