@@ -77,7 +77,7 @@ html, body {
   justify-content: space-around;
 }
 
-.scoreCardHole > h6 {
+.scoreCardHole > * {
   display: inherit;
   align-items: center;
   justify-content: center;
