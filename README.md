@@ -18,6 +18,7 @@ Back in the day, I used to scorekeep basketball games at the rec department for 
 - Tendency to be overambitious with my features.
 
 ### How It Works
+![alt text](https://github.com/SCollinA/scorecard/scorecard.png "Sample Screenshot")
 - Single page application that scales nicely for mobile
 - Scorecard is visible on main page pre-filled with dummy data
 - Click the reset button to reset the scorecard for a new round
@@ -51,6 +52,7 @@ Back in the day, I used to scorekeep basketball games at the rec department for 
 - paradox of choice
 - learning new technology
 - having two new kittens
+![alt text](https://github.com/SCollinA/scorecard/scorecard.png "Sample Screenshot")
 
 ## Future Plans
 - Redux undo/redo features
