@@ -8,11 +8,21 @@ This app was build using Redux and React bootstrapped with create-react-app and 
 ## Development
 This app was developed as a personal project in order to learn React and Redux. I developed the app through a series of iterative development cycles beginning with a list of feature and issues and addressing them one by one before starting another cycle.
 
+### How It Works
+The app is currently a single page application that scales nicely for mobile. When the user arrives at the application page, the scorecard is visible, pre-filled with dummy data. The user can click the reset button to reset the scorecard for a new round. Then, the user selects the par column and the hole number to change the par for a hole, and selects the shots column to change the shots for the hole. As shots and pars are added or removed from the app the entire scorecard with update.
+
+### Guts
+#### Redux
+The entire state of the app is maintained at the top level of the app and passed down to scorecard components. 
+#### React Router
+ Sits at the top of the app and directs traffic to components appropriately.
+
 ## Deployment
 This app is available as a live demo at https://scorecard.collinargo.com. This domain is registered with Google Domains and is hosted on an AWS server. PM2 is used to run the app continuously, while nginx directs network traffic to it. Finally certbot was used to generate SSL certificates for the site.
 
 ## Future Plans
--- Include multiple players
--- Include multiple courses
--- Include multiple golf game types
+-- Multiple players
+-- Multiple courses
+-- Express, MongoDB backend to store user rounds
+-- Multiple golf game types
 -- Develop apps for other sports
