@@ -13,9 +13,9 @@ The app is currently a single page application that scales nicely for mobile. Wh
 
 ### Guts
 #### Redux
-The entire state of the app is maintained at the top level of the app and passed down to scorecard components. 
+The entire state of the app is maintained at the top level of the app and passed down to scorecard components. Mostly, the Redux store is setup to hold all of the user's rounds and courses as well as the current round and course. For the MVP, these are the same.
 #### React Router
- Sits at the top of the app and directs traffic to components appropriately.
+Sits at the top of the app and directs traffic to components appropriately. While the router will eventually be helpful in sending the user to a login page and displaying different courses or holes, right now it is employed to select holes to add shots or edit par. This involves a combination of route paraments and dynamic links.
 
 ## Deployment
 This app is available as a live demo at https://scorecard.collinargo.com. This domain is registered with Google Domains and is hosted on an AWS server. PM2 is used to run the app continuously, while nginx directs network traffic to it. Finally certbot was used to generate SSL certificates for the site.
