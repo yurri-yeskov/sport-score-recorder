@@ -21,13 +21,13 @@ export default function GolferScoreCardHole({phs, playerScore, location, updateC
                 render={() => <GolfIncrementPar updateCurrentHole={updateCurrentHole} hole={hole} />}/>
             </div>
             <div className='scoreCardPlayerHoleShots'>
-                <Route path={`/:path?(.*editShots.*)${hole.id}`} 
-                render={() => <GolfDecrementShots updateCurrentHoleScore={updateCurrentHoleScore} phs={phs} />}/>
+                {phs.shots > 0 && <Route path={`/:path?(.*editShots.*)${hole.id}`} 
+                render={() => <GolfDecrementShots updateCurrentHoleScore={updateCurrentHoleScore} phs={phs} />}/>}
                 <h6>{phs.shots === 0 ? '' : phs.shots}</h6>
                 <Route path={`/:path?(.*editShots.*)${hole.id}`} 
                 render={() => <GolfIncrementShots updateCurrentHoleScore={updateCurrentHoleScore} phs={phs} />}/>
                 </div>
-            <h6>{playerScore === 0 ? 'E' : playerScore}</h6>
+            <h6>{phs.shots === 0 ? '' : (playerScore === 0 ? 'E' : `${playerScore > 0 ? '+' : ''}${playerScore}`)}</h6>
         </div>
     )
 }

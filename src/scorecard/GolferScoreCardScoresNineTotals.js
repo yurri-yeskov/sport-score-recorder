@@ -2,6 +2,14 @@ import React from 'react'
 
 export default function GolferScoreCardScoresNineTotals(props) {
     const {totalsRowLabel, startHoleNum, endHoleNum, playerHoles, playerHoleScores} = props
+    const nineTotalShots = playerHoleScores.slice(startHoleNum, endHoleNum)
+        .reduce((prevHole, currHole) => {
+            return prevHole.shots || prevHole.shots === 0 ? prevHole.shots + currHole.shots : prevHole + currHole.shots
+        })
+    const nineTotalScore = playerHoleScores.slice(startHoleNum, endHoleNum)
+    .filter(score => score.shots > 0)
+    .map((holeScore, index) => holeScore.shots - playerHoles[index].par) || 0
+    .reduce((prevScore, currScore) => prevScore + currScore)
     return (
     <div className='GolferScoreCardScoresNineTotals'>
         <h6>
@@ -14,15 +22,10 @@ export default function GolferScoreCardScoresNineTotals(props) {
             })}
         </h6>
         <h6>
-            {playerHoleScores.slice(startHoleNum, endHoleNum)
-            .reduce((prevHole, currHole) => {
-                return prevHole.shots || prevHole.shots === 0 ? prevHole.shots + currHole.shots : prevHole + currHole.shots
-            }) || 'E'}
+            {nineTotalShots || ''}
         </h6>
         <h6>
-            {playerHoleScores.slice(startHoleNum, endHoleNum)
-            .map((holeScore, index) => holeScore.shots - playerHoles[index].par)
-            .reduce((prevScore, currScore) => prevScore + currScore) || 'E'}
+            {(nineTotalScore > 0 && `+${nineTotalScore}`) || (nineTotalScore < 0 && `${nineTotalScore}`) || 'E'}
         </h6>
     </div>
     )

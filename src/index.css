@@ -113,6 +113,10 @@ html, body {
   justify-content: space-evenly;
 }
 
+.scoreCardPlayerHoleShots > * {
+  flex: 1;
+}
+
 .GolferScoreCardScoresNineTotals, .GolferScoreCardTotals {
   display: flex;
   justify-content: space-around;
