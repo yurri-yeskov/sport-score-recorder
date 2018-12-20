@@ -10,6 +10,9 @@ export default function GolferScoreCardHeader(props) {
             }}>
                 reset
             </button>
+            <h1 className='playerScore'>{playerHoleScores.reduce((prevScore, nextScore) => {
+                return prevScore.shots || prevScore.shots === 0 ? prevScore.shots + nextScore.shots : prevScore + nextScore.shots
+            }) || ''}</h1>
         </div>
     )
 }
