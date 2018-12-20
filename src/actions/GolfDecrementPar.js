@@ -6,7 +6,7 @@ export default function GolfDecrementPar({updateCurrentHole, hole}) {
     // get current hole
     // get hole score
     return (
-        <div className="GolfDecrementPar" onClick={() => updateCurrentHole({...hole, par: hole.par--})}>
+        <div className="GolfDecrementPar" onClick={() => updateCurrentHole({...hole, par: --hole.par})}>
             <h6> - </h6>
         </div>
     )

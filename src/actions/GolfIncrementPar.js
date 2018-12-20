@@ -6,7 +6,7 @@ export default function GolfIncrementPar({updateCurrentHole, hole}) {
     // get current hole
     // get hole score
     return (
-        <div className="GolfIncrementPar" onClick={() => updateCurrentHole({...hole, par: hole.par++})}>
+        <div className="GolfIncrementPar" onClick={() => updateCurrentHole({...hole, par: ++hole.par})}>
             <h6> + </h6>
         </div>
     )

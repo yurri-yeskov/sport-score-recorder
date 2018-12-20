@@ -6,7 +6,7 @@ export default function GolfIncrementShots({updateCurrentHoleScore, phs}) {
     // get current hole
     // get hole score
     return (
-        <div className="GolfIncrementShots" onClick={() => updateCurrentHoleScore({...phs, shots: phs.shots++})}>
+        <div className="GolfIncrementShots" onClick={() => updateCurrentHoleScore({...phs, shots: ++phs.shots})}>
             <h6> + </h6>
         </div>
     )

@@ -6,7 +6,9 @@ export default function GolfDecrementShots({updateCurrentHoleScore, phs}) {
     // get current hole
     // get hole score
     return (
-        <div className="GolfDecrementShots" onClick={() => updateCurrentHoleScore({...phs, shots: phs.shots--})}>
+        <div className="GolfDecrementShots" onClick={() => {
+            updateCurrentHoleScore({...phs, shots: --phs.shots})
+        }}>
             <h6> - </h6>
         </div>
     )

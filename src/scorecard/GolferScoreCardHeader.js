@@ -6,7 +6,6 @@ export default function GolferScoreCardHeader(props) {
         <div className='GolferScoreCardHeader'>
             <h1 className='playerName'>{player.name}</h1> 
             <button onClick={() => {
-                console.log(playerHoleScores)
                 playerHoleScores.forEach(holeScore => props.updateCurrentHoleScore({...holeScore, shots: 0}))
             }}>
                 reset
