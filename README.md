@@ -3,10 +3,19 @@
 Back in the day, I used to scorekeep basketball games at the rec department for extra money. We used paper and pencil, so you had to remember to bring a pencil, and it better have an eraser. I longed for a better solution, one that was more flexible and powerful. This app keeps score for golf, and is part of a planned series of scorekeeping apps for baseball, basketball, ping pong, and others.
 
 ## Stack
-This app was build using Redux and React bootstrapped with create-react-app and includes React Router as well. I chose to use Redux in order to keep track of the overall status of the game and to integrate with a planned future backend. React was used to update multiple values on the scorecard simultaneously, and React Router will be used to navigate the app, but is now used to select holes to edit.
+-- Built using Redux and React bootstrapped with create-react-app 
+-- React used to update multiple values on the scorecard simultaneously
+-- Uses Redux to track overall status of the game and to integrate with a planned future backend. 
+-- Includes React Router to navigate the app and to select holes to edit.
 
 ## Development
-This app was developed as a personal project in order to learn React and Redux. I developed the app through a series of iterative development cycles beginning with a list of feature and issues and addressing them one by one before starting another cycle.
+-- A personal project in order to learn React and Redux
+-- Developed through a series of iterative development cycles 
+-- Beginning with a list of feature and issues
+-- Addressing them one by one on separate git branches
+-- Starting another cycle after merging the changes to master
+-- Working solo was difficult as all decisions fell on my shoulders
+-- Tendency to be overambitious with my features.
 
 ### How It Works
 The app is currently a single page application that scales nicely for mobile. When the user arrives at the application page, the scorecard is visible, pre-filled with dummy data. The user can click the reset button to reset the scorecard for a new round. Then, the user selects the par column and the hole number to change the par for a hole, and selects the shots column to change the shots for the hole. As shots and pars are added or removed from the app the entire scorecard with update.
@@ -21,8 +30,10 @@ Sits at the top of the app and directs traffic to components appropriately. Whil
 This app is available as a live demo at https://scorecard.collinargo.com. This domain is registered with Google Domains and is hosted on an AWS server. PM2 is used to run the app continuously, while nginx directs network traffic to it. Finally certbot was used to generate SSL certificates for the site.
 
 ## Future Plans
+-- Redux undo/redo features
 -- Multiple players
 -- Multiple courses
 -- Express, MongoDB backend to store user rounds
+-- React Native
 -- Multiple golf game types
 -- Develop apps for other sports
