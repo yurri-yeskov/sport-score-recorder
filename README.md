@@ -46,6 +46,12 @@ Back in the day, I used to scorekeep basketball games at the rec department for 
 - nginx directs network traffic to it
 - certbot was used to generate SSL certificates for the site
 
+## Challenges
+- working solo
+- paradox of choice
+- learning new technology
+- having two new kittens
+
 ## Future Plans
 - Redux undo/redo features
 - Multiple players
