@@ -52,6 +52,7 @@ Back in the day, I used to scorekeep basketball games at the rec department for 
 - paradox of choice
 - learning new technology
 - having two new kittens
+
 ![alt text](https://github.com/SCollinA/scorecard/blob/master/kitties.png "Sample Screenshot")
 
 ## Future Plans
