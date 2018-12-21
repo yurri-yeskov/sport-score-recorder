@@ -2,9 +2,9 @@ import React from 'react'
 
 export default function GolferScoreCardTotals(props) {
     const {playerHoles, playerHoleScores} = props
-    const roundTotalScore = playerHoleScores.filter(score => score.shots > 0)
+    let roundTotalScore = playerHoleScores.filter(score => score.shots > 0)
     .map((holeScore, index) => holeScore.shots - playerHoles[index].par) || 0
-    .reduce((prevScore, currScore) => prevScore + currScore)
+    roundTotalScore = roundTotalScore.length > 0 ? roundTotalScore.reduce((prevScore, currScore) => prevScore + currScore) : 0
     return (
         <div className="GolferScoreCardTotals">
             <h6>TOT</h6>
