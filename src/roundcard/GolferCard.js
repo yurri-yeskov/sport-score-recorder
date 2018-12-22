@@ -3,7 +3,7 @@ import GolferCardHeader from './GolferCardHeader'
 import GolferCardNine from './GolferCardNine'
 import GolferCardTotals from './GolferCardTotals'
 
-export default function GolferCard({golfer, currentHole, updateCurrentHole}) {
+export default function GolferCard({golfer, currentHole, updateCurrentHole, isCurrentUser}) {
     const holeScores = golfer.currentCourseScore.holeScores
     return (
         <div className='GolferCard'>
@@ -13,12 +13,14 @@ export default function GolferCard({golfer, currentHole, updateCurrentHole}) {
                 front={true} 
                 currentHole={currentHole}
                 updateCurrentHole={updateCurrentHole}
+                isCurrentUser={isCurrentUser}
             />
             <GolferCardNine 
                 holeScores={holeScores} 
                 front={false} 
                 currentHole={currentHole}
                 updateCurrentHole={updateCurrentHole}
+                isCurrentUser={isCurrentUser}
             />
             <GolferCardTotals 
                 holeScores={holeScores} 

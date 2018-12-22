@@ -1,7 +1,7 @@
 import React from 'react'
 import GolferCardHole from './GolferCardHole'
 
-export default function GolferCardHoles({holeScores, startHoleNum, endHoleNum, currentHole, updateCurrentHole}) {
+export default function GolferCardHoles({holeScores, startHoleNum, endHoleNum, currentHole, updateCurrentHole, isCurrentUser}) {
     return (
         <div className='GolferCardHoles'>
             {holeScores.slice(startHoleNum, endHoleNum)
@@ -11,6 +11,7 @@ export default function GolferCardHoles({holeScores, startHoleNum, endHoleNum, c
                             holeScore={holeScore}
                             currentHole={holeScore.hole.id === currentHole.id}
                             updateCurrentHole={updateCurrentHole}
+                            isCurrentUser={isCurrentUser}
                         />
                     )
                 })
