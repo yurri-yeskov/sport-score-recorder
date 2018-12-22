@@ -29,7 +29,8 @@ const defaultState = {
     edit: {}, // object to edit, course/golfer
     group: {
         // current golfers
-        golfers: [{id: 2, name: 'collin', courseScores: [], 
+        golfers: [
+            {id: 2, name: 'collin', courseScores: [], 
                 currentCourseScore: {id: 21, holeScores: [
                     {id: 22, hole: {id: 3, number: 1, par: 3}, shots: 4},
                     {id: 23, hole: {id: 4, number: 2, par: 4}, shots: 3},
@@ -49,6 +50,28 @@ const defaultState = {
                     {id: 37, hole: {id: 18, number: 16, par: 3}, shots: 3},
                     {id: 38, hole: {id: 19, number: 17, par: 5}, shots: 4},
                     {id: 39, hole: {id: 20, number: 18, par: 5}, shots: 4},
+                ]},
+            },
+            {id: 40, name: 'coolin', courseScores: [], 
+                currentCourseScore: {id: 41, holeScores: [
+                    {id: 42, hole: {id: 3, number: 1, par: 3}, shots: 4},
+                    {id: 43, hole: {id: 4, number: 2, par: 4}, shots: 3},
+                    {id: 44, hole: {id: 5, number: 3, par: 5}, shots: 5},
+                    {id: 45, hole: {id: 6, number: 4, par: 4}, shots: 3},
+                    {id: 46, hole: {id: 7, number: 5, par: 5}, shots: 4},
+                    {id: 47, hole: {id: 8, number: 6, par: 3}, shots: 5},
+                    {id: 48, hole: {id: 9, number: 7, par: 4}, shots: 3},
+                    {id: 49, hole: {id: 10, number: 8, par: 3}, shots: 5},
+                    {id: 50, hole: {id: 11, number: 9, par: 5}, shots: 4},
+                    {id: 51, hole: {id: 12, number: 10, par: 4}, shots: 4},
+                    {id: 52, hole: {id: 13, number: 11, par: 3}, shots: 3},
+                    {id: 53, hole: {id: 14, number: 12, par: 5}, shots: 5},
+                    {id: 54, hole: {id: 15, number: 13, par: 4}, shots: 6},
+                    {id: 55, hole: {id: 16, number: 14, par: 4}, shots: 5},
+                    {id: 56, hole: {id: 17, number: 15, par: 3}, shots: 4},
+                    {id: 57, hole: {id: 18, number: 16, par: 3}, shots: 3},
+                    {id: 58, hole: {id: 19, number: 17, par: 5}, shots: 4},
+                    {id: 59, hole: {id: 20, number: 18, par: 5}, shots: 4},
                 ]},
             },
         ],
