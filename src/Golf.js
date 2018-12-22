@@ -1,12 +1,14 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
+import LoadingPage from './LoadingPage'
 import Gate from './Gate'
 import Clubhouse from './Clubhouse'
 import RoundForm from './RoundForm'
 import Round from './Round';
 
 export default function Golf(props) {
-    return (
+    props.currentGolfer && props.requestGolfState()
+    return props.isLoading ? <LoadingPage /> : (
         <div className="Gate">
             <Route exact
                 path="/login"
@@ -21,7 +23,6 @@ export default function Golf(props) {
                 render={routeProps => <RoundForm {...props} {...routeProps}/>}
             />
             <Route
-                // path='/play'
                 path='/:filter?'
                 render={routeProps => <Round {...props} {...routeProps}/>}
             />
