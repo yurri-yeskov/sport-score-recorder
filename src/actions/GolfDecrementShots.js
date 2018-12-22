@@ -1,6 +1,7 @@
 import React from 'react'
+import {updateHoleScore} from '../store'
 
-export default function GolfDecrementShots({updateHoleScore, holeScore}) {
+export default function GolfDecrementShots({holeScore}) {
     // get player
     // get course score
     // get current hole

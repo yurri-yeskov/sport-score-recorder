@@ -23,7 +23,15 @@ export default function Golf(props) {
             />
             <Route
                 path='/:filter?'
-                render={routeProps => <RoundCard group={props.group} updateHoleScore={props.updateHoleScore}/>}
+                render={routeProps => {
+                    return (
+                        <RoundCard 
+                            group={props.group} 
+                            updateHoleScore={props.updateHoleScore}
+                            updateCurrentHole={props.updateCurrentHole}
+                        />
+                    )
+                }}
             />
         </div>
     )
