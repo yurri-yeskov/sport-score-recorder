@@ -46,10 +46,11 @@ const defaultState = {
         {id: 38, course_score_id: 21, hole_id: 19, shots: 4},
         {id: 39, course_score_id: 21, hole_id: 20, shots: 4},
     ], // all the hole scores
+    currentGolfer: {id: 2, name: 'Golfer 1'},
     currentCourse: {id: 1, name: 'Golf Course'}, // the current course
     currentHole: {id: 12, course_id: 1, number: 10, par: 4},
-    currentGolfers: [{id: 2, name: 'Golfer 1'}], // the current golfers
-    currentCourseScores: [{id: 21, course_id: 1, pgolfer_id: 2}], // the current scores
+    currentGroup: [{id: 2, name: 'Golfer 1'}], // the current golfers
+    currentCourseScores: [{id: 21, course_id: 1, golfer_id: 2}], // the current scores
     currentHoleScores: [
         {id: 22, course_score_id: 21, hole_id: 3, shots: 4},
         {id: 23, course_score_id: 21, hole_id: 4, shots: 3},
@@ -70,7 +71,8 @@ const defaultState = {
         {id: 38, course_score_id: 21, hole_id: 19, shots: 4},
         {id: 39, course_score_id: 21, hole_id: 20, shots: 4},
     ], 
-    isLoading: false
+    isLoading: false,
+
     // searchTerm: ''
 }
 
