@@ -41,7 +41,13 @@ const mapDispatchToProps = (dispatch) => {
             dispatch(actions.addCurrentHoleScore(currentHoleScore))
         },
         // Retreive
+        requestGolfState: () => {
+            dispatch(actions.requestGolfState())
+        },
         // Update
+        // receiveGolfState: (golfState) => {
+        //     dispatch(actions.receiveGolfState(golfState))
+        // },
         updateCourse: (course) => {
             dispatch(actions.updateCourse(course))
         },

@@ -1,4 +1,4 @@
-import { createStore } from 'redux';
+import { createStore } from 'redux'
 import uuid from 'uuid/v4'
 
 // set up default state
@@ -70,6 +70,7 @@ const defaultState = {
         {id: 38, course_score_id: 21, hole_id: 19, shots: 4},
         {id: 39, course_score_id: 21, hole_id: 20, shots: 4},
     ], 
+    isLoading: false
     // searchTerm: ''
 }
 
@@ -105,7 +106,14 @@ const ADD_CURRENT_COURSE_SCORE = {
 const ADD_CURRENT_HOLE_SCORE = {
     type: 'ADD_CURRENT_HOLE_SCORE'
 }
+// Retrieve
+const REQUEST_GOLF_STATE = {
+    type: 'REQUEST_GOLF_STATE'
+}
 // Update
+const RECEIVE_GOLF_STATE = {
+    type: 'RECEIVE_GOLF_STATE'
+}
 const UPDATE_COURSE = {
     type: 'UPDATE_COURSE'
 }
@@ -268,6 +276,23 @@ export const addCurrentHoleScore = ({id, course_score_id, hole_id, shots}) => {
             hole_id,
             shots
         }
+    }
+}
+// Retrieve
+export const requestGolfState = () => {
+    fetch('http://localhost:3002/')
+    .then(res => res.json())
+    .then(receiveGolfState)
+    return {
+        ...REQUEST_GOLF_STATE,
+        isLoading: true
+    }
+}
+const receiveGolfState = (golfState) => {
+    return {
+        ...RECEIVE_GOLF_STATE,
+        golfState,
+        isLoading: false
     }
 }
 // Update
@@ -555,7 +580,18 @@ const scorecard = (state=defaultState, action) => {
                 action.newCurrentHoleScore
             ]
         }
+        // Retrieve
+        case REQUEST_GOLF_STATE.type:
+        return {
+            ...state,
+            golfState: action.golfState
+        }
         // Update
+        case RECEIVE_GOLF_STATE.type:
+        return {
+            ...state,
+            golfState: action.golfState
+        }
         case UPDATE_COURSE.type:
         return {
             ...state,
