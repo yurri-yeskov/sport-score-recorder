@@ -2,36 +2,17 @@ import { createStore } from 'redux'
 
 // set up default state
 const defaultState = {
-    golfer: {id: 2, name: 'collin', courseScores: [], 
-        currentCourseScore: {id: 21, holeScores: [
-            {id: 22, hole: {id: 3, number: 1, par: 3}, shots: 4},
-            {id: 23, hole: {id: 4, number: 2, par: 4}, shots: 3},
-            {id: 24, hole: {id: 5, number: 3, par: 5}, shots: 5},
-            {id: 25, hole: {id: 6, number: 4, par: 4}, shots: 3},
-            {id: 26, hole: {id: 7, number: 5, par: 5}, shots: 4},
-            {id: 27, hole: {id: 8, number: 6, par: 3}, shots: 5},
-            {id: 28, hole: {id: 9, number: 7, par: 4}, shots: 3},
-            {id: 29, hole: {id: 10, number: 8, par: 3}, shots: 5},
-            {id: 30, hole: {id: 11, number: 9, par: 5}, shots: 4},
-            {id: 31, hole: {id: 12, number: 10, par: 4}, shots: 4},
-            {id: 32, hole: {id: 13, number: 11, par: 3}, shots: 3},
-            {id: 33, hole: {id: 14, number: 12, par: 5}, shots: 5},
-            {id: 34, hole: {id: 15, number: 13, par: 4}, shots: 6},
-            {id: 35, hole: {id: 16, number: 14, par: 4}, shots: 5},
-            {id: 36, hole: {id: 17, number: 15, par: 3}, shots: 4},
-            {id: 37, hole: {id: 18, number: 16, par: 3}, shots: 3},
-            {id: 38, hole: {id: 19, number: 17, par: 5}, shots: 4},
-            {id: 39, hole: {id: 20, number: 18, par: 5}, shots: 4},
-        ]},
-    }, // logged in golfer
     searchTerm: '',
     searchResults: [], // golfer or courses that match searchterm
     edit: {}, // object to edit, course/golfer
-    group: {
-        // current golfers
-        golfers: [
-            {id: 2, name: 'collin', courseScores: [], 
-                currentCourseScore: {id: 21, holeScores: [
+    golfState: {
+        golfer: {
+            id: 2, 
+            name: 'collin', 
+            courseScores: [], 
+            currentCourseScore: {
+                id: 21, 
+                holeScores: [
                     {id: 22, hole: {id: 3, number: 1, par: 3}, shots: 4},
                     {id: 23, hole: {id: 4, number: 2, par: 4}, shots: 3},
                     {id: 24, hole: {id: 5, number: 3, par: 5}, shots: 5},
@@ -50,32 +31,10 @@ const defaultState = {
                     {id: 37, hole: {id: 18, number: 16, par: 3}, shots: 3},
                     {id: 38, hole: {id: 19, number: 17, par: 5}, shots: 4},
                     {id: 39, hole: {id: 20, number: 18, par: 5}, shots: 4},
-                ]},
+                ]
             },
-            {id: 40, name: 'coolin', courseScores: [], 
-                currentCourseScore: {id: 41, holeScores: [
-                    {id: 42, hole: {id: 3, number: 1, par: 3}, shots: 4},
-                    {id: 43, hole: {id: 4, number: 2, par: 4}, shots: 3},
-                    {id: 44, hole: {id: 5, number: 3, par: 5}, shots: 5},
-                    {id: 45, hole: {id: 6, number: 4, par: 4}, shots: 3},
-                    {id: 46, hole: {id: 7, number: 5, par: 5}, shots: 4},
-                    {id: 47, hole: {id: 8, number: 6, par: 3}, shots: 5},
-                    {id: 48, hole: {id: 9, number: 7, par: 4}, shots: 3},
-                    {id: 49, hole: {id: 10, number: 8, par: 3}, shots: 5},
-                    {id: 50, hole: {id: 11, number: 9, par: 5}, shots: 4},
-                    {id: 51, hole: {id: 12, number: 10, par: 4}, shots: 4},
-                    {id: 52, hole: {id: 13, number: 11, par: 3}, shots: 3},
-                    {id: 53, hole: {id: 14, number: 12, par: 5}, shots: 5},
-                    {id: 54, hole: {id: 15, number: 13, par: 4}, shots: 6},
-                    {id: 55, hole: {id: 16, number: 14, par: 4}, shots: 5},
-                    {id: 56, hole: {id: 17, number: 15, par: 3}, shots: 4},
-                    {id: 57, hole: {id: 18, number: 16, par: 3}, shots: 3},
-                    {id: 58, hole: {id: 19, number: 17, par: 5}, shots: 4},
-                    {id: 59, hole: {id: 20, number: 18, par: 5}, shots: 4},
-                ]},
-            },
-        ],
-        course: {id: 1, name: 'Whispering Pines', holes: [ // current course
+        }, // logged in golfer
+        courses: [{id: 1, name: 'Whispering Pines', holes: [
             {id: 3, number: 1, par: 3},
             {id: 4, number: 2, par: 4},
             {id: 5, number: 3, par: 5},
@@ -94,29 +53,78 @@ const defaultState = {
             {id: 18, number: 16, par: 3},
             {id: 19, number: 17, par: 5},
             {id: 20, number: 18, par: 5},
-        ]},
-        hole: {id: 12, number: 10, par: 4}, // current hole
+        ]}],  // all the courses
+        group: {
+    // current golfers
+            golfers: [
+                {id: 2, name: 'collin', courseScores: [], 
+                    currentCourseScore: {id: 21, holeScores: [
+                        {id: 22, hole: {id: 3, number: 1, par: 3}, shots: 4},
+                        {id: 23, hole: {id: 4, number: 2, par: 4}, shots: 3},
+                        {id: 24, hole: {id: 5, number: 3, par: 5}, shots: 5},
+                        {id: 25, hole: {id: 6, number: 4, par: 4}, shots: 3},
+                        {id: 26, hole: {id: 7, number: 5, par: 5}, shots: 4},
+                        {id: 27, hole: {id: 8, number: 6, par: 3}, shots: 5},
+                        {id: 28, hole: {id: 9, number: 7, par: 4}, shots: 3},
+                        {id: 29, hole: {id: 10, number: 8, par: 3}, shots: 5},
+                        {id: 30, hole: {id: 11, number: 9, par: 5}, shots: 4},
+                        {id: 31, hole: {id: 12, number: 10, par: 4}, shots: 4},
+                        {id: 32, hole: {id: 13, number: 11, par: 3}, shots: 3},
+                        {id: 33, hole: {id: 14, number: 12, par: 5}, shots: 5},
+                        {id: 34, hole: {id: 15, number: 13, par: 4}, shots: 6},
+                        {id: 35, hole: {id: 16, number: 14, par: 4}, shots: 5},
+                        {id: 36, hole: {id: 17, number: 15, par: 3}, shots: 4},
+                        {id: 37, hole: {id: 18, number: 16, par: 3}, shots: 3},
+                        {id: 38, hole: {id: 19, number: 17, par: 5}, shots: 4},
+                        {id: 39, hole: {id: 20, number: 18, par: 5}, shots: 4},
+                    ]},
+                },
+                {id: 40, name: 'coolin', courseScores: [], 
+                    currentCourseScore: {id: 41, holeScores: [
+                        {id: 42, hole: {id: 3, number: 1, par: 3}, shots: 4},
+                        {id: 43, hole: {id: 4, number: 2, par: 4}, shots: 3},
+                        {id: 44, hole: {id: 5, number: 3, par: 5}, shots: 5},
+                        {id: 45, hole: {id: 6, number: 4, par: 4}, shots: 3},
+                        {id: 46, hole: {id: 7, number: 5, par: 5}, shots: 4},
+                        {id: 47, hole: {id: 8, number: 6, par: 3}, shots: 5},
+                        {id: 48, hole: {id: 9, number: 7, par: 4}, shots: 3},
+                        {id: 49, hole: {id: 10, number: 8, par: 3}, shots: 5},
+                        {id: 50, hole: {id: 11, number: 9, par: 5}, shots: 4},
+                        {id: 51, hole: {id: 12, number: 10, par: 4}, shots: 4},
+                        {id: 52, hole: {id: 13, number: 11, par: 3}, shots: 3},
+                        {id: 53, hole: {id: 14, number: 12, par: 5}, shots: 5},
+                        {id: 54, hole: {id: 15, number: 13, par: 4}, shots: 6},
+                        {id: 55, hole: {id: 16, number: 14, par: 4}, shots: 5},
+                        {id: 56, hole: {id: 17, number: 15, par: 3}, shots: 4},
+                        {id: 57, hole: {id: 18, number: 16, par: 3}, shots: 3},
+                        {id: 58, hole: {id: 19, number: 17, par: 5}, shots: 4},
+                        {id: 59, hole: {id: 20, number: 18, par: 5}, shots: 4},
+                    ]},
+                },
+            ],
+            course: {id: 1, name: 'Whispering Pines', holes: [ // current course
+                {id: 3, number: 1, par: 3},
+                {id: 4, number: 2, par: 4},
+                {id: 5, number: 3, par: 5},
+                {id: 6, number: 4, par: 4},
+                {id: 7, number: 5, par: 5},
+                {id: 8, number: 6, par: 3},
+                {id: 9, number: 7, par: 4},
+                {id: 10, number: 8, par: 3},
+                {id: 11, number: 9, par: 5},
+                {id: 12, number: 10, par: 4},
+                {id: 13, number: 11, par: 3},
+                {id: 14, number: 12, par: 5},
+                {id: 15, number: 13, par: 4},
+                {id: 16, number: 14, par: 4},
+                {id: 17, number: 15, par: 3},
+                {id: 18, number: 16, par: 3},
+                {id: 19, number: 17, par: 5},
+                {id: 20, number: 18, par: 5},
+            ]},
+            hole: {id: 12, number: 10, par: 4}, // current hole
+        },
     },
-    courses: [{id: 1, name: 'Whispering Pines', holes: [
-        {id: 3, number: 1, par: 3},
-        {id: 4, number: 2, par: 4},
-        {id: 5, number: 3, par: 5},
-        {id: 6, number: 4, par: 4},
-        {id: 7, number: 5, par: 5},
-        {id: 8, number: 6, par: 3},
-        {id: 9, number: 7, par: 4},
-        {id: 10, number: 8, par: 3},
-        {id: 11, number: 9, par: 5},
-        {id: 12, number: 10, par: 4},
-        {id: 13, number: 11, par: 3},
-        {id: 14, number: 12, par: 5},
-        {id: 15, number: 13, par: 4},
-        {id: 16, number: 14, par: 4},
-        {id: 17, number: 15, par: 3},
-        {id: 18, number: 16, par: 3},
-        {id: 19, number: 17, par: 5},
-        {id: 20, number: 18, par: 5},
-    ]}],  // all the courses
     isLoading: false,
 }
 
@@ -176,39 +184,39 @@ const DELETE_GROUP = {
 // action methods
 // Create
 export const addCourse = (course) => {
-    fetch('http://localhost:3002/course', {
+    fetch('/course', {
         method: 'post',
         body: JSON.stringify(course),
         headers: {'Content-Type': 'application/json'}
     })
     .then(res => res.json())
-    .then(receiveGolfState)
+    .then(golfState => store.dispatch(receiveGolfState(golfState)))
     return {
         ...ADD_COURSE,
         isLoading: true
     }
 }
 export const addGolfer = (golfer) => {
-    fetch('http://localhost:3002/register', {
+    fetch('/register', {
         method: 'post',
         body: JSON.stringify(golfer),
         headers: {'Content-Type': 'application/json'}
     })
     .then(res => res.json())
-    .then(receiveGolfState)
+    .then(golfState => store.dispatch(receiveGolfState(golfState)))
     return {
         ...ADD_GOLFER,
         isLoading: true
     }
 }
 export const addGroup = (group) => {
-    fetch('http://localhost:3002/teetime', {
+    fetch('/teetime', {
         method: 'post',
         body: JSON.stringify(group),
         headers: {'Content-Type': 'application/json'}
     })
     .then(res => res.json())
-    .then(receiveGolfState)
+    .then(golfState => store.dispatch(receiveGolfState(golfState)))
     return {
         ...ADD_GROUP,
         isLoading: true
@@ -216,9 +224,9 @@ export const addGroup = (group) => {
 }
 // Retrieve
 export const requestGolfState = () => {
-    fetch('http://localhost:3002/')
+    fetch('/')
     .then(res => res.json())
-    .then(receiveGolfState)
+    .then(golfState => store.dispatch(receiveGolfState(golfState)))
     return {
         ...REQUEST_GOLF_STATE,
         isLoading: true
@@ -233,26 +241,26 @@ const receiveGolfState = (golfState) => {
 }
 // Update
 export const updateCourse = (course) => {
-    fetch('http://localhost:3002/updateCourse', {
+    fetch('/updateCourse', {
         method: 'post',
         body: JSON.stringify(course),
         headers: {'Content-Type': 'application/json'}
     })
     .then(res => res.json)
-    .then(receiveGolfState)
+    .then(golfState => store.dispatch(receiveGolfState(golfState)))
     return {
         ...UPDATE_COURSE,
         isLoading: true
     }
 }
 export const updateGolfer = (golfer) => {
-    fetch('http://localhost:3002/updateGolfer', {
+    fetch('/updateGolfer', {
         method: 'post',
         body: JSON.stringify(golfer),
         headers: {'Content-Type': 'application/json'}
     })
     .then(res => res.json)
-    .then(receiveGolfState)
+    .then(golfState => store.dispatch(receiveGolfState(golfState)))
     return {
         ...UPDATE_GOLFER,
         isLoading: true
@@ -265,9 +273,16 @@ export const updateCurrentHole = (hole) => {
     }
 }
 export const updateHoleScore = (holeScore) => {
+    fetch('/stroke', {
+        method: 'post',
+        body: JSON.stringify(holeScore),
+        headers: {'ContentType': 'application/json'}
+    })
+    .then(res => res.json())
+    .then(golfState => store.dispatch(receiveGolfState(golfState)))
     return {
         ...UPDATE_HOLE_SCORE,
-        holeScore
+        isLoading: true
     }
 }
 // Delete
@@ -331,7 +346,8 @@ const scorecard = (state=defaultState, action) => {
         case RECEIVE_GOLF_STATE.type:
         return {
             ...state,
-            golfState: action.golfState
+            golfState: action.golfState,
+            isLoading: action.isLoading
         }
         case UPDATE_COURSE.type:
         return {
@@ -346,18 +362,7 @@ const scorecard = (state=defaultState, action) => {
         case UPDATE_HOLE_SCORE.type:
         return {
             ...state,
-            group: {
-                golfers: state.group.golfers.map(golfer => {
-                    return golfer.currentCourseScore.holeScores.map(holeScore => {
-                        if (holeScore.id === action.holeScore.id) {
-                            return action.holeScore
-                        } else {
-                            return holeScore
-                        }
-                    })
-                }),
-                ...state.group
-            }
+            isLoading: action.isLoading
         }
         case UPDATE_CURRENT_HOLE.type:
         return {

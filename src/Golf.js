@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route } from 'react-router-dom'
+import { Route, Redirect } from 'react-router-dom'
 import LoadingPage from './LoadingPage'
 import Gate from './Gate'
 import Clubhouse from './Clubhouse'
@@ -7,7 +7,9 @@ import RoundForm from './RoundForm'
 import RoundCard from './roundcard/RoundCard';
 
 export default function Golf(props) {
-    return props.isLoading ? <LoadingPage /> : (
+    const {golfState} = props
+    return props.isLoading ? <LoadingPage /> : 
+    ( golfState.golfer && props.location.pathname !== '/login' ? <Redirect to='/login'/> : (
         <div className="Golf">
             <Route exact
                 path="/login"
@@ -27,8 +29,8 @@ export default function Golf(props) {
                     return (
                         <RoundCard
                             {...routeProps}
-                            currentUser={props.golfer}
-                            group={props.group} 
+                            currentUser={golfState.golfer}
+                            group={golfState.group} 
                             updateHoleScore={props.updateHoleScore}
                             updateCurrentHole={props.updateCurrentHole}
                         />
@@ -36,5 +38,5 @@ export default function Golf(props) {
                 }}
             />
         </div>
-    )
+    ))
 }

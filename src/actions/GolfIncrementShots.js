@@ -1,13 +1,13 @@
 import React from 'react'
-import {updateHoleScore} from '../store'
 
-export default function GolfIncrementShots({holeScore}) {
+export default function GolfIncrementShots({holeScore, updateHoleScore}) {
     // get player
     // get course score
     // get current hole
     // get hole score
     return (
-        <div className="GolfIncrementShots" onClick={() => {
+        <div className="GolfIncrementShots" onClick={event => {
+                event.stopPropagation()
                 updateHoleScore({...holeScore, shots: ++holeScore.shots})
             }}
         >
