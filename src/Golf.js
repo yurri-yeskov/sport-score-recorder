@@ -7,9 +7,8 @@ import RoundForm from './RoundForm'
 import Round from './Round';
 
 export default function Golf(props) {
-    props.currentGolfer && props.requestGolfState()
     return props.isLoading ? <LoadingPage /> : (
-        <div className="Gate">
+        <div className="Golf">
             <Route exact
                 path="/login"
                 render={routeProps => <Gate {...props} {...routeProps}/>}

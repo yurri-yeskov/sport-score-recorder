@@ -3,155 +3,153 @@ import uuid from 'uuid/v4'
 
 // set up default state
 const defaultState = {
-    courses: [{id: 1, name: 'Golf Course'}], // all the courses
-    holes: [
-        {id: 3, course_id: 1, number: 1, par: 3},
-        {id: 4, course_id: 1, number: 2, par: 4},
-        {id: 5, course_id: 1, number: 3, par: 5},
-        {id: 6, course_id: 1, number: 4, par: 4},
-        {id: 7, course_id: 1, number: 5, par: 5},
-        {id: 8, course_id: 1, number: 6, par: 3},
-        {id: 9, course_id: 1, number: 7, par: 4},
-        {id: 10, course_id: 1, number: 8, par: 3},
-        {id: 11, course_id: 1, number: 9, par: 5},
-        {id: 12, course_id: 1, number: 10, par: 4},
-        {id: 13, course_id: 1, number: 11, par: 3},
-        {id: 14, course_id: 1, number: 12, par: 5},
-        {id: 15, course_id: 1, number: 13, par: 4},
-        {id: 16, course_id: 1, number: 14, par: 4},
-        {id: 17, course_id: 1, number: 15, par: 3},
-        {id: 18, course_id: 1, number: 16, par: 3},
-        {id: 19, course_id: 1, number: 17, par: 5},
-        {id: 20, course_id: 1, number: 18, par: 5},
-    ], // all the holes
-    golfers: [{id: 2, name: 'Golfer 1'}], // all the golfers
-    courseScores: [{id: 21, course_id: 1, golfer_id: 2}], // all the scores
-    holeScores: [
-        {id: 22, course_score_id: 21, hole_id: 3, shots: 4},
-        {id: 23, course_score_id: 21, hole_id: 4, shots: 3},
-        {id: 24, course_score_id: 21, hole_id: 5, shots: 5},
-        {id: 25, course_score_id: 21, hole_id: 6, shots: 3},
-        {id: 26, course_score_id: 21, hole_id: 7, shots: 4},
-        {id: 27, course_score_id: 21, hole_id: 8, shots: 5},
-        {id: 28, course_score_id: 21, hole_id: 9, shots: 3},
-        {id: 29, course_score_id: 21, hole_id: 10, shots: 5},
-        {id: 30, course_score_id: 21, hole_id: 11, shots: 4},
-        {id: 31, course_score_id: 21, hole_id: 12, shots: 4},
-        {id: 32, course_score_id: 21, hole_id: 13, shots: 3},
-        {id: 33, course_score_id: 21, hole_id: 14, shots: 5},
-        {id: 34, course_score_id: 21, hole_id: 15, shots: 6},
-        {id: 35, course_score_id: 21, hole_id: 16, shots: 5},
-        {id: 36, course_score_id: 21, hole_id: 17, shots: 4},
-        {id: 37, course_score_id: 21, hole_id: 18, shots: 3},
-        {id: 38, course_score_id: 21, hole_id: 19, shots: 4},
-        {id: 39, course_score_id: 21, hole_id: 20, shots: 4},
-    ], // all the hole scores
-    currentGolfer: {id: 2, name: 'Golfer 1'},
-    currentCourse: {id: 1, name: 'Golf Course'}, // the current course
-    currentHole: {id: 12, course_id: 1, number: 10, par: 4},
-    currentGroup: [{id: 2, name: 'Golfer 1'}], // the current golfers
-    currentCourseScores: [{id: 21, course_id: 1, golfer_id: 2}], // the current scores
-    currentHoleScores: [
-        {id: 22, course_score_id: 21, hole_id: 3, shots: 4},
-        {id: 23, course_score_id: 21, hole_id: 4, shots: 3},
-        {id: 24, course_score_id: 21, hole_id: 5, shots: 5},
-        {id: 25, course_score_id: 21, hole_id: 6, shots: 3},
-        {id: 26, course_score_id: 21, hole_id: 7, shots: 4},
-        {id: 27, course_score_id: 21, hole_id: 8, shots: 5},
-        {id: 28, course_score_id: 21, hole_id: 9, shots: 3},
-        {id: 29, course_score_id: 21, hole_id: 10, shots: 5},
-        {id: 30, course_score_id: 21, hole_id: 11, shots: 4},
-        {id: 31, course_score_id: 21, hole_id: 12, shots: 4},
-        {id: 32, course_score_id: 21, hole_id: 13, shots: 3},
-        {id: 33, course_score_id: 21, hole_id: 14, shots: 5},
-        {id: 34, course_score_id: 21, hole_id: 15, shots: 6},
-        {id: 35, course_score_id: 21, hole_id: 16, shots: 5},
-        {id: 36, course_score_id: 21, hole_id: 17, shots: 4},
-        {id: 37, course_score_id: 21, hole_id: 18, shots: 3},
-        {id: 38, course_score_id: 21, hole_id: 19, shots: 4},
-        {id: 39, course_score_id: 21, hole_id: 20, shots: 4},
-    ], 
+    golfer: {id: 2, name: 'collin', courseScores: [], 
+        currentCourseScore: {id: 21, holeScores: [
+            {id: 22, hole: {id: 3, number: 1, par: 3}, shots: 4},
+            {id: 23, hole: {id: 4, number: 2, par: 4}, shots: 3},
+            {id: 24, hole: {id: 5, number: 3, par: 5}, shots: 5},
+            {id: 25, hole: {id: 6, number: 4, par: 4}, shots: 3},
+            {id: 26, hole: {id: 7, number: 5, par: 5}, shots: 4},
+            {id: 27, hole: {id: 8, number: 6, par: 3}, shots: 5},
+            {id: 28, hole: {id: 9, number: 7, par: 4}, shots: 3},
+            {id: 29, hole: {id: 10, number: 8, par: 3}, shots: 5},
+            {id: 30, hole: {id: 11, number: 9, par: 5}, shots: 4},
+            {id: 31, hole: {id: 12, number: 10, par: 4}, shots: 4},
+            {id: 32, hole: {id: 13, number: 11, par: 3}, shots: 3},
+            {id: 33, hole: {id: 14, number: 12, par: 5}, shots: 5},
+            {id: 34, hole: {id: 15, number: 13, par: 4}, shots: 6},
+            {id: 35, hole: {id: 16, number: 14, par: 4}, shots: 5},
+            {id: 36, hole: {id: 17, number: 15, par: 3}, shots: 4},
+            {id: 37, hole: {id: 18, number: 16, par: 3}, shots: 3},
+            {id: 38, hole: {id: 19, number: 17, par: 5}, shots: 4},
+            {id: 39, hole: {id: 20, number: 18, par: 5}, shots: 4},
+        ]},
+    }, // logged in golfer
+    searchTerm: '',
+    searchResults: [], // golfer or courses that match searchterm
+    edit: {}, // object to edit, course/golfer
+    group: {
+        // current golfers
+        golfers: [{id: 2, name: 'collin', courseScores: [], 
+                currentCourseScore: {id: 21, holeScores: [
+                    {id: 22, hole: {id: 3, number: 1, par: 3}, shots: 4},
+                    {id: 23, hole: {id: 4, number: 2, par: 4}, shots: 3},
+                    {id: 24, hole: {id: 5, number: 3, par: 5}, shots: 5},
+                    {id: 25, hole: {id: 6, number: 4, par: 4}, shots: 3},
+                    {id: 26, hole: {id: 7, number: 5, par: 5}, shots: 4},
+                    {id: 27, hole: {id: 8, number: 6, par: 3}, shots: 5},
+                    {id: 28, hole: {id: 9, number: 7, par: 4}, shots: 3},
+                    {id: 29, hole: {id: 10, number: 8, par: 3}, shots: 5},
+                    {id: 30, hole: {id: 11, number: 9, par: 5}, shots: 4},
+                    {id: 31, hole: {id: 12, number: 10, par: 4}, shots: 4},
+                    {id: 32, hole: {id: 13, number: 11, par: 3}, shots: 3},
+                    {id: 33, hole: {id: 14, number: 12, par: 5}, shots: 5},
+                    {id: 34, hole: {id: 15, number: 13, par: 4}, shots: 6},
+                    {id: 35, hole: {id: 16, number: 14, par: 4}, shots: 5},
+                    {id: 36, hole: {id: 17, number: 15, par: 3}, shots: 4},
+                    {id: 37, hole: {id: 18, number: 16, par: 3}, shots: 3},
+                    {id: 38, hole: {id: 19, number: 17, par: 5}, shots: 4},
+                    {id: 39, hole: {id: 20, number: 18, par: 5}, shots: 4},
+                ]},
+            },
+        ],
+        course: {id: 1, name: 'Whispering Pines', holes: [ // current course
+            {id: 3, number: 1, par: 3},
+            {id: 4, number: 2, par: 4},
+            {id: 5, number: 3, par: 5},
+            {id: 6, number: 4, par: 4},
+            {id: 7, number: 5, par: 5},
+            {id: 8, number: 6, par: 3},
+            {id: 9, number: 7, par: 4},
+            {id: 10, number: 8, par: 3},
+            {id: 11, number: 9, par: 5},
+            {id: 12, number: 10, par: 4},
+            {id: 13, number: 11, par: 3},
+            {id: 14, number: 12, par: 5},
+            {id: 15, number: 13, par: 4},
+            {id: 16, number: 14, par: 4},
+            {id: 17, number: 15, par: 3},
+            {id: 18, number: 16, par: 3},
+            {id: 19, number: 17, par: 5},
+            {id: 20, number: 18, par: 5},
+        ]},
+        hole: {id: 12, number: 10, par: 4}, // current hole
+    },
+    allCourses: [{id: 1, name: 'Whispering Pines', holes: [
+        {id: 3, number: 1, par: 3},
+        {id: 4, number: 2, par: 4},
+        {id: 5, number: 3, par: 5},
+        {id: 6, number: 4, par: 4},
+        {id: 7, number: 5, par: 5},
+        {id: 8, number: 6, par: 3},
+        {id: 9, number: 7, par: 4},
+        {id: 10, number: 8, par: 3},
+        {id: 11, number: 9, par: 5},
+        {id: 12, number: 10, par: 4},
+        {id: 13, number: 11, par: 3},
+        {id: 14, number: 12, par: 5},
+        {id: 15, number: 13, par: 4},
+        {id: 16, number: 14, par: 4},
+        {id: 17, number: 15, par: 3},
+        {id: 18, number: 16, par: 3},
+        {id: 19, number: 17, par: 5},
+        {id: 20, number: 18, par: 5},
+    ]}],  // all the courses
     isLoading: false,
-
-    // searchTerm: ''
 }
 
 // action types
 // Create
-const ADD_COURSE = {
-    type: 'ADD_COURSE'
-}
-const ADD_HOLE = {
-    type: 'ADD_HOLE'
-}
 const ADD_GOLFER = {
     type: 'ADD_GOLFER'
 }
-const ADD_COURSE_SCORE = {
-    type: 'ADD_COURSE_SCORE'
+const ADD_COURSE = {
+    type: 'ADD_COURSE'
 }
-const ADD_HOLE_SCORE = {
-    type: 'ADD_HOLE_SCORE'
-}
-const ADD_CURRENT_COURSE = {
-    type: 'ADD_CURRENT_COURSE'
-}
-const ADD_CURRENT_HOLE = {
-    type: 'ADD_CURRENT_HOLE'
-}
-const ADD_CURRENT_GOLFER = {
-    type: 'ADD_CURRENT_GOLFER'
-}
-const ADD_CURRENT_COURSE_SCORE = {
-    type: 'ADD_CURRENT_COURSE_SCORE'
-}
-const ADD_CURRENT_HOLE_SCORE = {
-    type: 'ADD_CURRENT_HOLE_SCORE'
+const ADD_GROUP = {
+    type: 'ADD_GROUP'
 }
 // Retrieve
+// after log in
 const REQUEST_GOLF_STATE = {
     type: 'REQUEST_GOLF_STATE'
 }
+// while searching
+const REQUEST_GOLFERS = {
+    type: 'REQUEST_GOLFERS'
+}
+// while searching
+const REQUEST_COURSES = {
+    type: 'REQUEST_COURSES'
+}
 // Update
+// logged in
 const RECEIVE_GOLF_STATE = {
     type: 'RECEIVE_GOLF_STATE'
 }
+// searching
+const RECEIVE_GOLFERS = {
+    type: 'RECEIVE_GOLFERS'
+}
+// searching
+const RECEIVE_COURSES = {
+    type: 'RECEIVE_COURSES'
+}
+// editing course
 const UPDATE_COURSE = {
     type: 'UPDATE_COURSE'
 }
-const UPDATE_HOLE = {
-    type: 'UPDATE_HOLE'
-}
+// editing golfer
 const UPDATE_GOLFER = {
     type: 'UPDATE_GOLFER'
 }
-const UPDATE_COURSE_SCORE = {
-    type: 'UPDATE_COURSE_SCORE'
-}
+// playing round
 const UPDATE_HOLE_SCORE = {
     type: 'UPDATE_HOLE_SCORE'
-}
-const UPDATE_CURRENT_COURSE = {
-    type: 'UPDATE_CURRENT_COURSE'
-}
-const UPDATE_CURRENT_HOLE = {
-    type: 'UPDATE_CURRENT_HOLE'
-}
-const UPDATE_CURRENT_GOLFER = {
-    type: 'UPDATE_CURRENT_GOLFER'
-}
-const UPDATE_CURRENT_COURSE_SCORE = {
-    type: 'UPDATE_CURRENT_COURSE_SCORE'
-}
-const UPDATE_CURRENT_HOLE_SCORE = {
-    type: 'UPDATE_CURRENT_HOLE_SCORE'
 }
 // Delete
 const DELETE_COURSE = {
     type: 'DELETE_COURSE'
-}
-const DELETE_HOLE = {
-    type: 'DELETE_HOLE'
 }
 const DELETE_GOLFER = {
     type: 'DELETE_GOLFER'
@@ -159,23 +157,8 @@ const DELETE_GOLFER = {
 const DELETE_COURSE_SCORE = {
     type: 'DELETE_COURSE_SCORE'
 }
-const DELETE_HOLE_SCORE = {
-    type: 'DELETE_HOLE_SCORE'
-}
-const DELETE_CURRENT_COURSE = {
-    type: 'DELETE_CURRENT_COURSE'
-}
-const DELETE_CURRENT_HOLE = {
-    type: 'DELETE_CURRENT_HOLE'
-}
-const DELETE_CURRENT_GOLFER = {
-    type: 'DELETE_CURRENT_GOLFER'
-}
-const DELETE_CURRENT_COURSE_SCORE = {
-    type: 'DELETE_CURRENT_COURSE_SCORE'
-}
-const DELETE_CURRENT_HOLE_SCORE = {
-    type: 'DELETE_CURRENT_HOLE_SCORE'
+const DELETE_GROUP = {
+    type: 'DELETE_GROUP'
 }
 
 // action methods
