@@ -24,8 +24,8 @@ const defaultState = {
         {id: 19, course_id: 1, number: 17, par: 5},
         {id: 20, course_id: 1, number: 18, par: 5},
     ], // all the holes
-    players: [{id: 2, name: 'Player 1'}], // all the players
-    courseScores: [{id: 21, course_id: 1, player_id: 2}], // all the scores
+    golfers: [{id: 2, name: 'Golfer 1'}], // all the golfers
+    courseScores: [{id: 21, course_id: 1, golfer_id: 2}], // all the scores
     holeScores: [
         {id: 22, course_score_id: 21, hole_id: 3, shots: 4},
         {id: 23, course_score_id: 21, hole_id: 4, shots: 3},
@@ -48,8 +48,8 @@ const defaultState = {
     ], // all the hole scores
     currentCourse: {id: 1, name: 'Golf Course'}, // the current course
     currentHole: {id: 12, course_id: 1, number: 10, par: 4},
-    currentPlayers: [{id: 2, name: 'Player 1'}], // the current players
-    currentCourseScores: [{id: 21, course_id: 1, player_id: 2}], // the current scores
+    currentGolfers: [{id: 2, name: 'Golfer 1'}], // the current golfers
+    currentCourseScores: [{id: 21, course_id: 1, pgolfer_id: 2}], // the current scores
     currentHoleScores: [
         {id: 22, course_score_id: 21, hole_id: 3, shots: 4},
         {id: 23, course_score_id: 21, hole_id: 4, shots: 3},
@@ -81,8 +81,8 @@ const ADD_COURSE = {
 const ADD_HOLE = {
     type: 'ADD_HOLE'
 }
-const ADD_PLAYER = {
-    type: 'ADD_PLAYER'
+const ADD_GOLFER = {
+    type: 'ADD_GOLFER'
 }
 const ADD_COURSE_SCORE = {
     type: 'ADD_COURSE_SCORE'
@@ -96,8 +96,8 @@ const ADD_CURRENT_COURSE = {
 const ADD_CURRENT_HOLE = {
     type: 'ADD_CURRENT_HOLE'
 }
-const ADD_CURRENT_PLAYER = {
-    type: 'ADD_CURRENT_PLAYER'
+const ADD_CURRENT_GOLFER = {
+    type: 'ADD_CURRENT_GOLFER'
 }
 const ADD_CURRENT_COURSE_SCORE = {
     type: 'ADD_CURRENT_COURSE_SCORE'
@@ -112,8 +112,8 @@ const UPDATE_COURSE = {
 const UPDATE_HOLE = {
     type: 'UPDATE_HOLE'
 }
-const UPDATE_PLAYER = {
-    type: 'UPDATE_PLAYER'
+const UPDATE_GOLFER = {
+    type: 'UPDATE_GOLFER'
 }
 const UPDATE_COURSE_SCORE = {
     type: 'UPDATE_COURSE_SCORE'
@@ -127,8 +127,8 @@ const UPDATE_CURRENT_COURSE = {
 const UPDATE_CURRENT_HOLE = {
     type: 'UPDATE_CURRENT_HOLE'
 }
-const UPDATE_CURRENT_PLAYER = {
-    type: 'UPDATE_CURRENT_PLAYER'
+const UPDATE_CURRENT_GOLFER = {
+    type: 'UPDATE_CURRENT_GOLFER'
 }
 const UPDATE_CURRENT_COURSE_SCORE = {
     type: 'UPDATE_CURRENT_COURSE_SCORE'
@@ -143,8 +143,8 @@ const DELETE_COURSE = {
 const DELETE_HOLE = {
     type: 'DELETE_HOLE'
 }
-const DELETE_PLAYER = {
-    type: 'DELETE_PLAYER'
+const DELETE_GOLFER = {
+    type: 'DELETE_GOLFER'
 }
 const DELETE_COURSE_SCORE = {
     type: 'DELETE_COURSE_SCORE'
@@ -158,8 +158,8 @@ const DELETE_CURRENT_COURSE = {
 const DELETE_CURRENT_HOLE = {
     type: 'DELETE_CURRENT_HOLE'
 }
-const DELETE_CURRENT_PLAYER = {
-    type: 'DELETE_CURRENT_PLAYER'
+const DELETE_CURRENT_GOLFER = {
+    type: 'DELETE_CURRENT_GOLFER'
 }
 const DELETE_CURRENT_COURSE_SCORE = {
     type: 'DELETE_CURRENT_COURSE_SCORE'
@@ -190,21 +190,21 @@ export const addHole = ({course_id, number, par}) => {
         }
     }
 }
-export const addPlayer = ({name}) => {
+export const addGolfer = ({name}) => {
     return {
-        ...ADD_PLAYER,
-        newPlayer: {
+        ...ADD_GOLFER,
+        newGolfer: {
             id: uuid(),
             name
         }
     }
 }
-export const addCourseScore = ({player_id, course_id}) => {
+export const addCourseScore = ({golfer_id, course_id}) => {
     return {
         ...ADD_COURSE_SCORE,
         newCourseScore: {
             id: uuid(),
-            player_id,
+            golfer_id,
             course_id
         }
     }
@@ -240,21 +240,21 @@ export const addCurrentHole = ({id, course_id, number, par}) => {
         }
     }
 }
-export const addCurrentPlayer = ({id, name}) => {
+export const addCurrentGolfer = ({id, name}) => {
     return {
-        ...ADD_CURRENT_PLAYER,
-        newCurrentPlayer: {
+        ...ADD_CURRENT_GOLFER,
+        newCurrentGolfer: {
             id,
             name
         }
     }
 }
-export const addCurrentCourseScore = ({id, player_id, course_id}) => {
+export const addCurrentCourseScore = ({id, golfer_id, course_id}) => {
     return {
         ...ADD_CURRENT_COURSE_SCORE,
         newCurrentCourseScore: {
             id,
-            player_id,
+            golfer_id,
             course_id
         }
     }
@@ -291,22 +291,22 @@ export const updateHole = ({id, course_id, number, par}) => {
         }
     }
 }
-export const updatePlayer = ({id, name}) => {
+export const updateGolfer = ({id, name}) => {
     return {
-        ...UPDATE_PLAYER,
-        updatedPlayer: {
+        ...UPDATE_GOLFER,
+        updatedGolfer: {
             id,
             name
         }
     }
 }
-export const updateCourseScore = ({id, course_id, player_id}) => {
+export const updateCourseScore = ({id, course_id, golfer_id}) => {
     return {
         ...UPDATE_COURSE_SCORE,
         updatedCourseScore: {
             id,
             course_id,
-            player_id
+            golfer_id
         }
     }
 }
@@ -341,21 +341,21 @@ export const updateCurrentHole = ({id, course_id, number, par}) => {
         }
     }
 }
-export const updateCurrentPlayer = ({id, name}) => {
+export const updateCurrentGolfer = ({id, name}) => {
     return {
-        ...UPDATE_CURRENT_PLAYER,
-        updatedCurrentPlayer: {
+        ...UPDATE_CURRENT_GOLFER,
+        updatedCurrentGolfer: {
             id,
             name
         }
     }
 }
-export const updateCurrentCourseScore = ({id, player_id, course_id}) => {
+export const updateCurrentCourseScore = ({id, golfer_id, course_id}) => {
     return {
         ...UPDATE_CURRENT_COURSE_SCORE,
         updatedCurrentCourseScore: {
             id,
-            player_id,
+            golfer_id,
             course_id
         }
     }
@@ -392,22 +392,22 @@ export const deleteHole = ({id, course_id, number, par}) => {
         }
     }
 }
-export const deletePlayer = ({id, name}) => {
+export const deleteGolfer = ({id, name}) => {
     return {
-        ...DELETE_PLAYER,
-        playerToDelete: {
+        ...DELETE_GOLFER,
+        golferToDelete: {
             id,
             name
         }
     }
 }
-export const deleteCourseScore = ({id, course_id, player_id}) => {
+export const deleteCourseScore = ({id, course_id, golfer_id}) => {
     return {
         ...DELETE_COURSE_SCORE,
         courseScoreToDelete: {
             id,
             course_id,
-            player_id
+            golfer_id
         }
     }
 }
@@ -442,21 +442,21 @@ export const deleteCurrentHole = ({id, course_id, number, par}) => {
         }
     }
 }
-export const deleteCurrentPlayer = ({id, name}) => {
+export const deleteCurrentGolfer = ({id, name}) => {
     return {
-        ...DELETE_CURRENT_PLAYER,
-        deletedCurrentPlayer: {
+        ...DELETE_CURRENT_GOLFER,
+        deletedCurrentGolfer: {
             id,
             name
         }
     }
 }
-export const deleteCurrentCourseScore = ({id, player_id, course_id}) => {
+export const deleteCurrentCourseScore = ({id, golfer_id, course_id}) => {
     return {
         ...DELETE_CURRENT_COURSE_SCORE,
         deletedCurrentCourseScore: {
             id,
-            player_id,
+            golfer_id,
             course_id
         }
     }
@@ -497,12 +497,12 @@ const scorecard = (state=defaultState, action) => {
                 action.newHole
             ]
         }
-        case ADD_PLAYER.type:
+        case ADD_GOLFER.type:
         return {
             ...state,
-            players: [
-                ...state.players,
-                action.newPlayer
+            golfers: [
+                ...state.golfers,
+                action.newGolfer
             ]
         }
         case ADD_COURSE_SCORE.type:
@@ -531,12 +531,12 @@ const scorecard = (state=defaultState, action) => {
             ...state,
             currentHole: action.newCurrentHole
         }
-        case ADD_CURRENT_PLAYER.type:
+        case ADD_CURRENT_GOLFER.type:
         return {
             ...state,
-            currentPlayers: [
-                ...state.currentPlayers,
-                action.newCurrentPlayer
+            currentGolfers: [
+                ...state.currentGolfers,
+                action.newCurrentGolfer
             ]
         }
         case ADD_CURRENT_COURSE_SCORE.type:
@@ -578,14 +578,14 @@ const scorecard = (state=defaultState, action) => {
                 }
             })
         }
-        case UPDATE_PLAYER.type:
+        case UPDATE_GOLFER.type:
         return {
             ...state,
-            players: state.players.map(player => {
-                if (player.id === action.updatedPlayer.id) {
-                    return action.updatedPlayer
+            golfers: state.golfers.map(golfer => {
+                if (golfer.id === action.updatedGolfer.id) {
+                    return action.updatedGolfer
                 } else {
-                    return player
+                    return golfer
                 }
             })
         }
@@ -621,14 +621,14 @@ const scorecard = (state=defaultState, action) => {
             ...state,
             currentHole: action.updatedCurrentHole
         }
-        case UPDATE_CURRENT_PLAYER.type:
+        case UPDATE_CURRENT_GOLFER.type:
         return {
             ...state,
-            currentPlayers: state.currentPlayers.map(player => {
-                if (player.id === action.updatedCurrentPlayer.id) {
-                    return action.updatedCurrentPlayer
+            currentGolfers: state.currentGolfers.map(golfer => {
+                if (golfer.id === action.updatedCurrentGolfer.id) {
+                    return action.updatedCurrentGolfer
                 } else {
-                    return player
+                    return golfer
                 }
             })
         }
@@ -665,10 +665,10 @@ const scorecard = (state=defaultState, action) => {
             ...state,
             holes: state.holes.filter(hole => hole.id !== action.holeToDelete.id)
         }
-        case DELETE_PLAYER.type:
+        case DELETE_GOLFER.type:
         return {
             ...state,
-            players: state.players.filter(player => player.id !== action.playerToDelete.id)
+            golfers: state.golfers.filter(golfer => golfer.id !== action.golferToDelete.id)
         }
         case DELETE_COURSE_SCORE.type:
         return {
@@ -690,10 +690,10 @@ const scorecard = (state=defaultState, action) => {
             ...state,
             currentHole: {}
         }
-        case DELETE_CURRENT_PLAYER.type:
+        case DELETE_CURRENT_GOLFER.type:
         return {
             ...state,
-            currentPlayers: state.currentPlayers.filter(player => player.id !== action.deleteCurrentPlayer.id)
+            currentGolfers: state.currentGolfers.filter(golfer => golfer.id !== action.deleteCurrentGolfer.id)
         }
         case DELETE_CURRENT_COURSE_SCORE.type:
         return {

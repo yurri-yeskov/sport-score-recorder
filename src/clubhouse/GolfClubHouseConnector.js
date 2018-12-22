@@ -16,8 +16,8 @@ const mapDispatchToProps = (dispatch) => {
         addHole: (hole) => {
             dispatch(actions.addHole(hole))
         },
-        addPlayer: (player) => {
-            dispatch(actions.addPlayer(player))
+        addGolfer: (golfer) => {
+            dispatch(actions.addGolfer(golfer))
         },
         addCourseScore: (courseScore) => {
             dispatch(actions.addCourseScore(courseScore))
@@ -28,8 +28,8 @@ const mapDispatchToProps = (dispatch) => {
         addCurrentCourse: (currentCourse) => {
             dispatch(actions.addCurrentCourse(currentCourse))
         },
-        addCurrentPlayer: (currentPlayer) => {
-            dispatch(actions.addCurrentPlayer(currentPlayer))
+        addCurrentGolfer: (currentGolfer) => {
+            dispatch(actions.addCurrentGolfer(currentGolfer))
         },
         addCurrentHole: (currentHole) => {
             dispatch(actions.addCurrentHole(currentHole))
@@ -48,8 +48,8 @@ const mapDispatchToProps = (dispatch) => {
         updateHole: (hole) => {
             dispatch(actions.updateHole(hole))
         },
-        updatePlayer: (player) => {
-            dispatch(actions.updatePlayer(player))
+        updateGolfer: (golfer) => {
+            dispatch(actions.updateGolfer(golfer))
         },
         updateCourseScore: (courseScore) => {
             dispatch(actions.updateCourseScore(courseScore))
@@ -60,8 +60,8 @@ const mapDispatchToProps = (dispatch) => {
         updateCurrentCourse: (currentCourse) => {
             dispatch(actions.updateCurrentCourse(currentCourse))
         },
-        updateCurrentPlayer: (currentPlayer) => {
-            dispatch(actions.updateCurrentPlayer(currentPlayer))
+        updateCurrentGolfer: (currentGolfer) => {
+            dispatch(actions.updateCurrentGolfer(currentGolfer))
         },
         updateCurrentHole: (currentHole) => {
             dispatch(actions.updateCurrentHole(currentHole))
@@ -79,8 +79,8 @@ const mapDispatchToProps = (dispatch) => {
         deleteHole: (hole) => {
             dispatch(actions.deleteHole(hole))
         },
-        deletePlayer: (player) => {
-            dispatch(actions.deletePlayer(player))
+        deleteGolfer: (golfer) => {
+            dispatch(actions.deleteGolfer(golfer))
         },
         deleteCourseScore: (courseScore) => {
             dispatch(actions.deleteCourseScore(courseScore))
@@ -91,8 +91,8 @@ const mapDispatchToProps = (dispatch) => {
         deleteCurrentCourse: (currentCourse) => {
             dispatch(actions.deleteCurrentCourse(currentCourse))
         },
-        deleteCurrentPlayer: (currentPlayer) => {
-            dispatch(actions.deleteCurrentPlayer(currentPlayer))
+        deleteCurrentGolfer: (currentGolfer) => {
+            dispatch(actions.deleteCurrentGolfer(currentGolfer))
         },
         deleteCurrentHole: (currentHole) => {
             dispatch(actions.deleteCurrentHole(currentHole))
