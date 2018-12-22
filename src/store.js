@@ -326,8 +326,8 @@ const scorecard = (state=defaultState, action) => {
             group: {
                 golfers: state.group.golfers.map(golfer => {
                     return golfer.currentCourseScore.holeScores.map(holeScore => {
-                        if (holeScore.id === action.updatedHoleScore.id) {
-                            return action.updatedHoleScore
+                        if (holeScore.id === action.holeScore.id) {
+                            return action.holeScore
                         } else {
                             return holeScore
                         }
