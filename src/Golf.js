@@ -4,7 +4,7 @@ import LoadingPage from './LoadingPage'
 import Gate from './Gate'
 import Clubhouse from './Clubhouse'
 import RoundForm from './RoundForm'
-import Round from './Round';
+import RoundCard from './RoundCard';
 
 export default function Golf(props) {
     return props.isLoading ? <LoadingPage /> : (
@@ -23,7 +23,7 @@ export default function Golf(props) {
             />
             <Route
                 path='/:filter?'
-                render={routeProps => <Round {...props} {...routeProps}/>}
+                render={routeProps => <RoundCard group={props.group} {...routeProps}/>}
             />
         </div>
     )
