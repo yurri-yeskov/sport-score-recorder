@@ -32,97 +32,113 @@ html, body {
   height: 100%;
 }
 
+.Golf {
+  height: 100%;
+}
+
+.LoadingPage {
+  height: 100%;
+}
+
 .Gate {
   height: 100%;
 }
 
-.GolfRound {
+.Clubhouse {
   height: 100%;
 }
 
-.GolfScoreCard {
+.RoundForm {
+  height: 100%;
+}
+
+.RoundCard {
+  height: 100%;
+}
+
+.GolferCard {
   height: 100%;
   display: flex;
   flex-direction: column;
 }
 
-.GolferScoreCardHeader {
+.GolferCardHeader {
   display: flex;
   justify-content: space-around;
 }
 
-.playerName, .playerScore {
+.golferName, .golferScore {
   flex: 1;
 }
 
-.GolferScoreCardHeader > button {
+.GolferCardHeader > button {
   margin: auto;
 }
 
-.GolferScoreCardScores {
+.GolferCardScores {
   flex: 1;
   display: flex;
   flex-direction: column;
 }
 
-.GolferScoreCardScores > * {
+.GolferCardScores > * {
   border: solid black 5px;
   justify-content: space-around;
 }
 
-.GolferScoreCardScores > *  {
+.GolferCardScores > *  {
   border: solid black 1px;
 }
 
-.GolferScoreCardScoresHeader {
+.GolferCardHeader {
   display: flex;
 }
 
-.GolferScoreCardScores {
+.GolferCardScores {
   flex: 1;
   display: flex;
   flex-direction: column;
 }
 
-.GolferScoreCardScoresNine {
+.GolferCardNine {
   flex: 1;
   display: flex;
   flex-direction: column;
 }
 
-.GolferScoreCardScoresNineHoles {
+.GolferCardHoles {
   flex: 1;
   display: flex;
   flex-direction: column;
 }
 
-.GolferScoreCardHole {
+.GolferCardHole {
   flex: 1;
   display: flex;
   justify-content: space-around;
 }
 
-.GolferScoreCardHole > * {
+.currentHole {
+  background-color: aquamarine;
+}
+
+.GolferCardHole > * {
   display: inherit;
   align-items: center;
   justify-content: center;
 }
 
-.scoreCardHolePar, .scoreCardPlayerHoleShots {
-  display: flex;
-  justify-content: space-evenly;
-}
-
-.scoreCardPlayerHoleShots > * {
-  flex: 1;
-}
-
-.GolferScoreCardScoresNineTotals, .GolferScoreCardTotals {
+.golferCardHoleShots {
   display: flex;
   justify-content: space-around;
 }
 
-.GolferScoreCardHole > *, .GolferScoreCardTotals > *, .GolferScoreCardScoresNineTotals > * {
+.GolferCardTotals {
+  display: flex;
+  justify-content: space-around;
+}
+
+.GolferCardHole > *, .GolferCardTotals > * {
   flex: 1;
   border: solid black 1px;
 }
