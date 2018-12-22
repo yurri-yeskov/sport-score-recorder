@@ -5,6 +5,7 @@ import GolfDecrementShots from '../actions/GolfDecrementShots'
 // import GolfDecrementPar from '../actions/GolfDecrementPar' 
 
 export default function GolferCardHole({holeScore, currentHole, updateHoleScore}) {
+    const score = holeScore.shots - holeScore.hole.par
     return (
         <div className={`GolferCardHole${currentHole ? ' currentHole' : ''}`}>
             <h6>{holeScore.hole.number}</h6>
@@ -14,7 +15,7 @@ export default function GolferCardHole({holeScore, currentHole, updateHoleScore}
                 <h6>{holeScore.shots === 0 ? '' : holeScore.shots}</h6>
                 {currentHole && <GolfIncrementShots updateHoleScore={updateHoleScore} holeScore={holeScore} />}
             </div>
-            <h6>{holeScore.shots - holeScore.hole.par}</h6>
+            <h6>{score !== 0 ? `${score > 0 ? '+' : ''}${score}` : 'E'}</h6>
         </div>
     )
 }
