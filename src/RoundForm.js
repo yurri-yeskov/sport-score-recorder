@@ -18,7 +18,7 @@ export default function RoundForm({golfState, searchTerm, updateSearchTerm, addG
                     updateSearchTerm={updateSearchTerm}
                 />
             </div>
-            <button onClick={() => addGroup({course: golfState.courses[0], golfers: [golfState.golfers[0]]})}>tee off</button>
+            <button onClick={() => addGroup({course: golfState.courses[0], golfers: [golfState.golfer]})}>tee off</button>
         </div>
     )
-}
+} 

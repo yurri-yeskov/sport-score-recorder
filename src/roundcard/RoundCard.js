@@ -14,16 +14,16 @@ export default function RoundCard({currentUser, group, updateHoleScore, updateCu
             }}/>
             {group.golfers.map(golfer => {
                 return (
-                    <Route key={golfer.id}
+                    <Route key={golfer._id}
                         exact path={`/${golfer.name}`}
                         render={routeProps => {
                             return (
-                                <GolferCard key={golfer.id} 
+                                <GolferCard key={golfer._id} 
                                     golfer={golfer}
                                     currentHole={group.hole}
                                     updateHoleScore={updateHoleScore}
                                     updateCurrentHole={updateCurrentHole}
-                                    isCurrentUser={currentUser.id === golfer.id}
+                                    isCurrentUser={currentUser._id === golfer._id}
                                 />
                             )
                         }}
