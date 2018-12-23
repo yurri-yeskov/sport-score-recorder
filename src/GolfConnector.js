@@ -24,9 +24,12 @@ const mapDispatchToProps = (dispatch) => {
             dispatch(actions.requestGolfState())
         },
         // Update
-        // receiveGolfState: (golfState) => {
-        //     dispatch(actions.receiveGolfState(golfState))
-        // },
+        loginGolfer: (loginInfo) => {
+            dispatch(actions.loginGolfer(loginInfo))
+        },
+        logoutGolfer: () => {
+            dispatch(actions.logoutGolfer())
+        },
         updateCourse: (course) => {
             dispatch(actions.updateCourse(course))
         },

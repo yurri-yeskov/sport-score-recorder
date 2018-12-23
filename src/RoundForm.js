@@ -1,17 +1,24 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import GolfSearch from './GolfSearch'
 
-export default function RoundForm(props) {
+export default function RoundForm({golfState, searchTerm, updateSearchTerm, addGroup}) {
     return (
         <div className="RoundForm">
             <div className="chooseCourseForm">
-                <GolfSearch {...props} type='courses'/>
+                <GolfSearch type='courses'
+                    searchItems={golfState.courses} 
+                    searchTerm={searchTerm}
+                    updateSearchTerm={updateSearchTerm}
+                />
             </div>
             <div className="chooseGolfersForm">
-                <GolfSearch {...props} type='golfers'/>
+                <GolfSearch type='golfers'
+                    searchItems={golfState.golfers} 
+                    searchTerm={searchTerm}
+                    updateSearchTerm={updateSearchTerm}
+                />
             </div>
-            <Link to='/play'/>
+            <button onClick={() => addGroup({course: golfState.courses[0], golfers: [golfState.golfers[0]]})}>tee off</button>
         </div>
     )
 }

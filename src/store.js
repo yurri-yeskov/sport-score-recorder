@@ -2,12 +2,13 @@ import { createStore } from 'redux'
 
 // set up default state
 const defaultState = {
+    isLoading: false,
     searchTerm: '',
     searchResults: [], // golfer or courses that match searchterm
     edit: {}, // object to edit, course/golfer
     golfState: {
         golfer: {
-            id: 2, 
+            _id: 2, 
             name: 'collin', 
             courseScores: [], 
             currentCourseScore: {
@@ -34,6 +35,36 @@ const defaultState = {
                 ]
             },
         }, // logged in golfer
+        golfers: [
+            {
+                _id: 2, 
+                name: 'collin', 
+                courseScores: [], 
+                currentCourseScore: {
+                    id: 21, 
+                    holeScores: [
+                        {id: 22, hole: {id: 3, number: 1, par: 3}, shots: 4},
+                        {id: 23, hole: {id: 4, number: 2, par: 4}, shots: 3},
+                        {id: 24, hole: {id: 5, number: 3, par: 5}, shots: 5},
+                        {id: 25, hole: {id: 6, number: 4, par: 4}, shots: 3},
+                        {id: 26, hole: {id: 7, number: 5, par: 5}, shots: 4},
+                        {id: 27, hole: {id: 8, number: 6, par: 3}, shots: 5},
+                        {id: 28, hole: {id: 9, number: 7, par: 4}, shots: 3},
+                        {id: 29, hole: {id: 10, number: 8, par: 3}, shots: 5},
+                        {id: 30, hole: {id: 11, number: 9, par: 5}, shots: 4},
+                        {id: 31, hole: {id: 12, number: 10, par: 4}, shots: 4},
+                        {id: 32, hole: {id: 13, number: 11, par: 3}, shots: 3},
+                        {id: 33, hole: {id: 14, number: 12, par: 5}, shots: 5},
+                        {id: 34, hole: {id: 15, number: 13, par: 4}, shots: 6},
+                        {id: 35, hole: {id: 16, number: 14, par: 4}, shots: 5},
+                        {id: 36, hole: {id: 17, number: 15, par: 3}, shots: 4},
+                        {id: 37, hole: {id: 18, number: 16, par: 3}, shots: 3},
+                        {id: 38, hole: {id: 19, number: 17, par: 5}, shots: 4},
+                        {id: 39, hole: {id: 20, number: 18, par: 5}, shots: 4},
+                    ]
+                },
+            },
+        ], // all other golfers
         courses: [{id: 1, name: 'Whispering Pines', holes: [
             {id: 3, number: 1, par: 3},
             {id: 4, number: 2, par: 4},
@@ -57,7 +88,7 @@ const defaultState = {
         group: {
     // current golfers
             golfers: [
-                {id: 2, name: 'collin', courseScores: [], 
+                {_id: 2, name: 'collin', courseScores: [], 
                     currentCourseScore: {id: 21, holeScores: [
                         {id: 22, hole: {id: 3, number: 1, par: 3}, shots: 4},
                         {id: 23, hole: {id: 4, number: 2, par: 4}, shots: 3},
@@ -125,7 +156,6 @@ const defaultState = {
             hole: {id: 12, number: 10, par: 4}, // current hole
         },
     },
-    isLoading: false,
 }
 
 // action types
@@ -151,6 +181,12 @@ const REQUEST_GOLF_STATE = {
 // logged in
 const RECEIVE_GOLF_STATE = {
     type: 'RECEIVE_GOLF_STATE'
+}
+const LOGIN_GOLFER = {
+    type: 'LOGIN_GOLFER'
+}
+const LOGOUT_GOLFER = {
+    type: 'LOGOUT_GOLFER'
 }
 // editing course
 const UPDATE_COURSE = {
@@ -233,6 +269,7 @@ export const requestGolfState = () => {
     }
 }
 const receiveGolfState = (golfState) => {
+    console.log('receiving golf state')
     return {
         ...RECEIVE_GOLF_STATE,
         golfState,
@@ -240,6 +277,28 @@ const receiveGolfState = (golfState) => {
     }
 }
 // Update
+export const loginGolfer = (loginInfo) => {
+    fetch('/login', {
+        method: 'post',
+        body: JSON.stringify(loginInfo),
+        headers: {'Content-Type': 'application/json'}
+    })
+    .then(res => res.json())
+    .then(golfState => store.dispatch(receiveGolfState(golfState)))
+    return {
+        ...LOGIN_GOLFER,
+        isLoading: true
+    }
+}
+export const logoutGolfer = () => {
+    fetch('/logout')
+    .then(res => res.json())
+    .then(golfState => store.dispatch(receiveGolfState(golfState)))
+    return {
+        ...LOGOUT_GOLFER,
+        isLoading: true
+    }
+}
 export const updateCourse = (course) => {
     fetch('/updateCourse', {
         method: 'post',
@@ -347,6 +406,16 @@ const scorecard = (state=defaultState, action) => {
         return {
             ...state,
             golfState: action.golfState,
+            isLoading: action.isLoading
+        }
+        case LOGIN_GOLFER.type:
+        return {
+            ...state,
+            isLoading: action.isLoading
+        }
+        case LOGOUT_GOLFER.type:
+        return {
+            ...state,
             isLoading: action.isLoading
         }
         case UPDATE_COURSE.type:

@@ -1,21 +1,17 @@
 import React from 'react'
 
-export default function GolfSearch(props) {
-    const {type, searchTerm} = props
+export default function GolfSearch({type, searchItems, searchTerm, updateSearchTerm}) {
     return (
         <div className="GolfSearch">
             <label>
                 {`${type} search`}
                 <input type='text' 
                 name={`${type}Name`} 
-                value={props.searchTerm}
-                onChange={event => props.updateSearchTerm({updatedSearchTerm: event.target.value})}/>
+                value={searchTerm}
+                onChange={event => updateSearchTerm({updatedSearchTerm: event.target.value})}/>
             </label>
-            {type === 'courses' ? 
-                props.courses.filter(course => course.name.includes(searchTerm)).map(course => <h1 key={course.id}>{course.name}</h1>)
-             : 
-                props.players.filter(player => player.name.includes(searchTerm)).map(player => <h1 key={player.id}>{player.name}</h1>)
-            }
+            {searchItems.filter(searchItem => searchItem.name.includes(searchTerm))
+                .map(searchItem => <h1 key={searchItem.id || searchItem._id}>{searchItem.name}</h1>)}
         </div>
     )
 }

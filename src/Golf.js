@@ -7,23 +7,36 @@ import RoundForm from './RoundForm'
 import RoundCard from './roundcard/RoundCard';
 
 export default function Golf(props) {
+    console.log('at main app page')
     const {golfState} = props
-    return props.isLoading ? <LoadingPage /> : 
-    ( !golfState.golfer.id && props.location.pathname !== '/login' ? <Redirect to='/login'/> : (
+    return (props.isLoading && <LoadingPage />) ||
+    ((!golfState.golfer._id && props.location.pathname !== '/login') && <Redirect to='/login'/>) ||
+    ((!golfState.golfer.currentCourseScore && 
+        (props.location.pathname !== '/clubhouse' && props.location.pathname !== '/teetime')) && 
+        <Redirect to='/clubhouse'/>) ||
+    (
         <div className="Golf">
             <Switch>
                 <Route exact
                     path="/login"
-                    render={routeProps => <Gate {...props} {...routeProps}/>}
-                    />
+                    render={routeProps => <Gate loginGolfer={props.loginGolfer}/>}
+                />
                 <Route exact
                     path="/clubhouse"
-                    render={routeProps => <Clubhouse {...props} {...routeProps}/>}
-                    />
+                    render={routeProps => <Clubhouse golfState={golfState} />}
+                />
                 <Route exact
                     path="/teetime"
-                    render={routeProps => <RoundForm {...props} {...routeProps}/>}
-                    />
+                    render={routeProps => {
+                        return (
+                            <RoundForm golfState={golfState} 
+                                searchTerm={props.searchTerm} 
+                                updateSearchTerm={props.updateSearchTerm} 
+                                addGroup={props.addGroup}
+                            />
+                        )
+                    }} 
+                />
                 <Route
                     path='/:filter?'
                     render={routeProps => {
@@ -40,5 +53,5 @@ export default function Golf(props) {
                 />
             </Switch>
         </div>
-    ))
+    )
 }
