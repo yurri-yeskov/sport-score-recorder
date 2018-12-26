@@ -14,10 +14,12 @@ export default function Golf(props) {
     // page is loading
     return (props.isLoading && <LoadingPage />) ||
     // not logged in or at login page
-    ((!isLoggedIn && (props.location.pathname !== '/login' && <Redirect to='/login'/>)) ||
+    (((!isLoggedIn && (props.location.pathname !== '/login' && <Redirect to='/login'/>)) ||
+    // logged in and at login page
+    (isLoggedIn && (props.location.pathname === '/login' && <Redirect to='/'/>))) ||
     // logged in but not playing round or at clubhouse
     // not at teetime either
-    ((isLoggedIn && !isPlayingRound) && ((props.location.pathname !== '/clubhouse' && props.location.pathname !== '/teetime') && <Redirect to='/clubhouse'/>)) ||
+    // ((isLoggedIn && !isPlayingRound) && ((props.location.pathname !== '/clubhouse' && props.location.pathname !== '/teetime') && <Redirect to='/clubhouse'/>)) ||
         (<div className="Golf">
             <GolfNav {...props} />
             <Switch>
@@ -26,7 +28,7 @@ export default function Golf(props) {
                     render={routeProps => <Gate loginGolfer={props.loginGolfer} addGolfer={props.addGolfer}/>}
                 />
                 <Route exact
-                    path="/clubhouse"
+                    path="/"
                     render={routeProps => <Clubhouse golfState={golfState} />}
                 />
                 <Route exact
@@ -42,7 +44,7 @@ export default function Golf(props) {
                     }} 
                 />
                 <Route
-                    path='/:filter?'
+                    path='/round/:golfer?'
                     render={routeProps => {
                         return (
                             <RoundCard
