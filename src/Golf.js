@@ -2,6 +2,7 @@ import React from 'react'
 import { Route, Switch, Redirect } from 'react-router-dom'
 import LoadingPage from './LoadingPage'
 import Gate from './Gate'
+import GolfNav from './GolfNav'
 import Clubhouse from './Clubhouse'
 import RoundForm from './RoundForm'
 import RoundCard from './roundcard/RoundCard';
@@ -16,6 +17,7 @@ export default function Golf(props) {
         <Redirect to='/clubhouse'/>) ||
     (
         <div className="Golf">
+            <GolfNav {...props} />
             <Switch>
                 <Route exact
                     path="/login"
