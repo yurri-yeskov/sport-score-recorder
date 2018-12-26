@@ -1,6 +1,9 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export default function GolfSearch({type, searchItems, searchTerm, updateSearchTerm}) {
+    const searchResults = searchItems.filter(searchItem => searchItem.name && searchItem.name.includes(searchTerm))
+                .map(searchItem => <h1 key={searchItem.id || searchItem._id}>{searchItem.name}</h1>)
     return (
         <div className="GolfSearch">
             <label>
@@ -10,8 +13,7 @@ export default function GolfSearch({type, searchItems, searchTerm, updateSearchT
                 value={searchTerm}
                 onChange={event => updateSearchTerm({updatedSearchTerm: event.target.value})}/>
             </label>
-            {searchItems.filter(searchItem => searchItem.name && searchItem.name.includes(searchTerm))
-                .map(searchItem => <h1 key={searchItem.id || searchItem._id}>{searchItem.name}</h1>)}
+            {searchResults.length > 0 ? searchResults : <Link to='/addCourse'>add course</Link> }
         </div>
     )
 }
