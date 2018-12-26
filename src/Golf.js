@@ -8,13 +8,16 @@ import RoundForm from './RoundForm'
 import RoundCard from './roundcard/RoundCard';
 
 export default function Golf(props) {
-    console.log('at main app page')
     const {golfState} = props
+    console.log(`is loading: ${props.isLoading}`)
+    console.log(`golfer id: ${props.golfState.golfer._id}`)
+    console.log(`current coursescore: ${props.golfState.currentCourseScore}`)
+    console.log(`current path: ${props.location.pathname}`)
     return (props.isLoading && <LoadingPage />) ||
-    ((!golfState.golfer._id && props.location.pathname !== '/login') && <Redirect to='/login'/>) ||
-    ((!golfState.golfer.currentCourseScore && 
-        (props.location.pathname !== '/clubhouse' && props.location.pathname !== '/teetime')) && 
-        <Redirect to='/clubhouse'/>) ||
+    (((!golfState.golfer._id && props.location.pathname !== '/login') && <Redirect to='/login'/>) ||
+    ((!golfState.golfer.currentCourseScore && (props.location.pathname !== '/clubhouse' && props.location.pathname !== '/teetime')) && 
+        <Redirect to='/clubhouse'/>) 
+        ||
     (
         <div className="Golf">
             <GolfNav {...props} />
@@ -55,5 +58,5 @@ export default function Golf(props) {
                 />
             </Switch>
         </div>
-    )
+    ))
 }

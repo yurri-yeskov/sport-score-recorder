@@ -7,6 +7,7 @@ export default function GolfNav(props) {
             <Link to={props.location} onClick={() => props.history.goBack()}>Back</Link>
             <NavLink to='/'>Home</NavLink>
             <button onClick={() => {
+                console.log(props.golfState.golfer)
                 props.logoutGolfer()
             }}>logout</button>
         </div>

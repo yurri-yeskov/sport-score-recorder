@@ -13,6 +13,7 @@ export default function RoundCard({currentUser, group, updateHoleScore, updateCu
                 )
             }}/>
             {group.golfers.map(golfer => {
+                console.log(golfer._id)
                 return (
                     <Route key={golfer._id}
                         exact path={`/${golfer.name}`}
