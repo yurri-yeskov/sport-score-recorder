@@ -10,7 +10,7 @@ export default function GolfSearch({type, searchItems, searchTerm, updateSearchT
                 value={searchTerm}
                 onChange={event => updateSearchTerm({updatedSearchTerm: event.target.value})}/>
             </label>
-            {searchItems.filter(searchItem => searchItem.name.includes(searchTerm))
+            {searchItems.filter(searchItem => searchItem.name && searchItem.name.includes(searchTerm))
                 .map(searchItem => <h1 key={searchItem.id || searchItem._id}>{searchItem.name}</h1>)}
         </div>
     )
