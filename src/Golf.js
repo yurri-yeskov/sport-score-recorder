@@ -11,7 +11,7 @@ export default function Golf(props) {
     const {golfState} = props
     const isLoggedIn = golfState.golfer && golfState.golfer._id
     console.log(golfState.golfer)
-    const isPlayingRound = isLoggedIn && golfState.golfer.currentCourseScore._id
+    const isPlayingRound = isLoggedIn && golfState.golfer.currentCourseScore
     let changingPath
     if (isLoggedIn) {
         if (!isPlayingRound) {
