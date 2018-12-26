@@ -15,7 +15,9 @@ export default function Golf(props) {
     console.log(`current path: ${props.location.pathname}`)
     return (props.isLoading && <LoadingPage />) ||
     (((!golfState.golfer._id && props.location.pathname !== '/login') && <Redirect to='/login'/>) ||
-    ((!golfState.golfer.currentCourseScore && (props.location.pathname !== '/clubhouse' && props.location.pathname !== '/teetime')) && 
+    //trying not to go back to login but ends up in clubhouse
+    ((!golfState.golfer.currentCourseScore &&
+         (props.location.pathname !== '/clubhouse' && props.location.pathname !== '/teetime' && props.location.pathname !== '/login')) && 
         <Redirect to='/clubhouse'/>) 
         ||
     (
