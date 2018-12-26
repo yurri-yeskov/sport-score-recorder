@@ -5,12 +5,12 @@ import Gate from './Gate'
 import GolfNav from './GolfNav'
 import Clubhouse from './Clubhouse'
 import RoundForm from './RoundForm'
+import GolfAddCourseForm from './GolfAddCourseForm'
 import RoundCard from './roundcard/RoundCard';
 
 export default function Golf(props) {
     const {golfState} = props
     const isLoggedIn = golfState.golfer && golfState.golfer._id
-    const isPlayingRound = isLoggedIn && golfState.golfer.currentCourseScore
     // page is loading
     return (props.isLoading && <LoadingPage />) ||
     // not logged in or at login page
@@ -43,6 +43,15 @@ export default function Golf(props) {
                         )
                     }} 
                 />
+                <Route exact
+                    path='/addCourse'
+                    render={routeProps => {
+                        return (
+                            <GolfAddCourseForm addCourse={props.addCourse}/>
+                        )
+                    }}
+                />
+                    }
                 <Route
                     path='/round/:golfer?'
                     render={routeProps => {

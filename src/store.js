@@ -59,6 +59,9 @@ const UPDATE_CURRENT_HOLE = {
 const UPDATE_HOLE_SCORE = {
     type: 'UPDATE_HOLE_SCORE'
 }
+const UPDATE_SEARCH_TERM = {
+    type: 'UPDATE_SEARCH_TERM'
+}
 // Delete
 const DELETE_COURSE = {
     type: 'DELETE_COURSE'
@@ -200,6 +203,12 @@ export const updateHoleScore = (holeScore) => {
         isLoading: true
     }
 }
+export const updateSearchTerm = (searchTerm) => {
+    return {
+        ...UPDATE_SEARCH_TERM,
+        searchTerm
+    }
+}
 // Delete
 export const deleteCourse = (course) => {
     return {
@@ -299,6 +308,11 @@ const scorecard = (state=defaultState, action) => {
                 ...state.group,
                 hole: action.hole
             }
+        }
+        case UPDATE_SEARCH_TERM.type:
+        return {
+            ...state,
+            searchTerm: action.searchTerm
         }
         // Delete
         case DELETE_COURSE.type:
