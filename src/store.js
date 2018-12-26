@@ -7,155 +7,11 @@ const defaultState = {
     searchResults: [], // golfer or courses that match searchterm
     edit: {}, // object to edit, course/golfer
     golfState: {
-        // golfer: {
-        //     _id: 2, 
-        //     name: 'collin', 
-        //     courseScores: [], 
-        //     currentCourseScore: {
-        //         _id: 21, 
-        //         holeScores: [
-        //             {_id: 22, hole: {_id: 3, number: 1, par: 3}, shots: 4},
-        //             {_id: 23, hole: {_id: 4, number: 2, par: 4}, shots: 3},
-        //             {_id: 24, hole: {_id: 5, number: 3, par: 5}, shots: 5},
-        //             {_id: 25, hole: {_id: 6, number: 4, par: 4}, shots: 3},
-        //             {_id: 26, hole: {_id: 7, number: 5, par: 5}, shots: 4},
-        //             {_id: 27, hole: {_id: 8, number: 6, par: 3}, shots: 5},
-        //             {_id: 28, hole: {_id: 9, number: 7, par: 4}, shots: 3},
-        //             {_id: 29, hole: {_id: 10, number: 8, par: 3}, shots: 5},
-        //             {_id: 30, hole: {_id: 11, number: 9, par: 5}, shots: 4},
-        //             {_id: 31, hole: {_id: 12, number: 10, par: 4}, shots: 4},
-        //             {_id: 32, hole: {_id: 13, number: 11, par: 3}, shots: 3},
-        //             {_id: 33, hole: {_id: 14, number: 12, par: 5}, shots: 5},
-        //             {_id: 34, hole: {_id: 15, number: 13, par: 4}, shots: 6},
-        //             {_id: 35, hole: {_id: 16, number: 14, par: 4}, shots: 5},
-        //             {_id: 36, hole: {_id: 17, number: 15, par: 3}, shots: 4},
-        //             {_id: 37, hole: {_id: 18, number: 16, par: 3}, shots: 3},
-        //             {_id: 38, hole: {_id: 19, number: 17, par: 5}, shots: 4},
-        //             {_id: 39, hole: {_id: 20, number: 18, par: 5}, shots: 4},
-        //         ]
-        //     },
-        // }, // logged in golfer
-        // golfers: [
-            // {
-            //     _id: 2, 
-            //     name: 'collin', 
-            //     courseScores: [], 
-            //     currentCourseScore: {
-            //         _id: 21, 
-            //         holeScores: [
-            //             {_id: 22, hole: {_id: 3, number: 1, par: 3}, shots: 4},
-            //             {_id: 23, hole: {_id: 4, number: 2, par: 4}, shots: 3},
-            //             {_id: 24, hole: {_id: 5, number: 3, par: 5}, shots: 5},
-            //             {_id: 25, hole: {_id: 6, number: 4, par: 4}, shots: 3},
-            //             {_id: 26, hole: {_id: 7, number: 5, par: 5}, shots: 4},
-            //             {_id: 27, hole: {_id: 8, number: 6, par: 3}, shots: 5},
-            //             {_id: 28, hole: {_id: 9, number: 7, par: 4}, shots: 3},
-            //             {_id: 29, hole: {_id: 10, number: 8, par: 3}, shots: 5},
-            //             {_id: 30, hole: {_id: 11, number: 9, par: 5}, shots: 4},
-            //             {_id: 31, hole: {_id: 12, number: 10, par: 4}, shots: 4},
-            //             {_id: 32, hole: {_id: 13, number: 11, par: 3}, shots: 3},
-            //             {_id: 33, hole: {_id: 14, number: 12, par: 5}, shots: 5},
-            //             {_id: 34, hole: {_id: 15, number: 13, par: 4}, shots: 6},
-            //             {_id: 35, hole: {_id: 16, number: 14, par: 4}, shots: 5},
-            //             {_id: 36, hole: {_id: 17, number: 15, par: 3}, shots: 4},
-            //             {_id: 37, hole: {_id: 18, number: 16, par: 3}, shots: 3},
-            //             {_id: 38, hole: {_id: 19, number: 17, par: 5}, shots: 4},
-            //             {_id: 39, hole: {_id: 20, number: 18, par: 5}, shots: 4},
-            //         ]
-            //     },
-            // },
-        //], // all other golfers
-        // courses: [{_id: 1, name: 'Whispering Pines', holes: [
-        //     {_id: 3, number: 1, par: 3},
-        //     {_id: 4, number: 2, par: 4},
-        //     {_id: 5, number: 3, par: 5},
-        //     {_id: 6, number: 4, par: 4},
-        //     {_id: 7, number: 5, par: 5},
-        //     {_id: 8, number: 6, par: 3},
-        //     {_id: 9, number: 7, par: 4},
-        //     {_id: 10, number: 8, par: 3},
-        //     {_id: 11, number: 9, par: 5},
-        //     {_id: 12, number: 10, par: 4},
-        //     {_id: 13, number: 11, par: 3},
-        //     {_id: 14, number: 12, par: 5},
-        //     {_id: 15, number: 13, par: 4},
-        //     {_id: 16, number: 14, par: 4},
-        //     {_id: 17, number: 15, par: 3},
-        //     {_id: 18, number: 16, par: 3},
-        //     {_id: 19, number: 17, par: 5},
-        //     {_id: 20, number: 18, par: 5},
-        // ]}],  // all the courses
-     //   group: {
-    // current golfers
-    //         golfers: [
-    //             {_id: 2, name: 'collin', courseScores: [], 
-    //                 currentCourseScore: {_id: 21, holeScores: [
-    //                     {_id: 22, hole: {_id: 3, number: 1, par: 3}, shots: 4},
-    //                     {_id: 23, hole: {_id: 4, number: 2, par: 4}, shots: 3},
-    //                     {_id: 24, hole: {_id: 5, number: 3, par: 5}, shots: 5},
-    //                     {_id: 25, hole: {_id: 6, number: 4, par: 4}, shots: 3},
-    //                     {_id: 26, hole: {_id: 7, number: 5, par: 5}, shots: 4},
-    //                     {_id: 27, hole: {_id: 8, number: 6, par: 3}, shots: 5},
-    //                     {_id: 28, hole: {_id: 9, number: 7, par: 4}, shots: 3},
-    //                     {_id: 29, hole: {_id: 10, number: 8, par: 3}, shots: 5},
-    //                     {_id: 30, hole: {_id: 11, number: 9, par: 5}, shots: 4},
-    //                     {_id: 31, hole: {_id: 12, number: 10, par: 4}, shots: 4},
-    //                     {_id: 32, hole: {_id: 13, number: 11, par: 3}, shots: 3},
-    //                     {_id: 33, hole: {_id: 14, number: 12, par: 5}, shots: 5},
-    //                     {_id: 34, hole: {_id: 15, number: 13, par: 4}, shots: 6},
-    //                     {_id: 35, hole: {_id: 16, number: 14, par: 4}, shots: 5},
-    //                     {_id: 36, hole: {_id: 17, number: 15, par: 3}, shots: 4},
-    //                     {_id: 37, hole: {_id: 18, number: 16, par: 3}, shots: 3},
-    //                     {_id: 38, hole: {_id: 19, number: 17, par: 5}, shots: 4},
-    //                     {_id: 39, hole: {_id: 20, number: 18, par: 5}, shots: 4},
-    //                 ]},
-    //             },
-    //             {_id: 40, name: 'coolin', courseScores: [], 
-    //                 currentCourseScore: {_id: 41, holeScores: [
-    //                     {_id: 42, hole: {_id: 3, number: 1, par: 3}, shots: 4},
-    //                     {_id: 43, hole: {_id: 4, number: 2, par: 4}, shots: 3},
-    //                     {_id: 44, hole: {_id: 5, number: 3, par: 5}, shots: 5},
-    //                     {_id: 45, hole: {_id: 6, number: 4, par: 4}, shots: 3},
-    //                     {_id: 46, hole: {_id: 7, number: 5, par: 5}, shots: 4},
-    //                     {_id: 47, hole: {_id: 8, number: 6, par: 3}, shots: 5},
-    //                     {_id: 48, hole: {_id: 9, number: 7, par: 4}, shots: 3},
-    //                     {_id: 49, hole: {_id: 10, number: 8, par: 3}, shots: 5},
-    //                     {_id: 50, hole: {_id: 11, number: 9, par: 5}, shots: 4},
-    //                     {_id: 51, hole: {_id: 12, number: 10, par: 4}, shots: 4},
-    //                     {_id: 52, hole: {_id: 13, number: 11, par: 3}, shots: 3},
-    //                     {_id: 53, hole: {_id: 14, number: 12, par: 5}, shots: 5},
-    //                     {_id: 54, hole: {_id: 15, number: 13, par: 4}, shots: 6},
-    //                     {_id: 55, hole: {_id: 16, number: 14, par: 4}, shots: 5},
-    //                     {_id: 56, hole: {_id: 17, number: 15, par: 3}, shots: 4},
-    //                     {_id: 57, hole: {_id: 18, number: 16, par: 3}, shots: 3},
-    //                     {_id: 58, hole: {_id: 19, number: 17, par: 5}, shots: 4},
-    //                     {_id: 59, hole: {_id: 20, number: 18, par: 5}, shots: 4},
-    //                 ]},
-    //             },
-    //         ],
-    //         course: {_id: 1, name: 'Whispering Pines', holes: [ // current course
-    //             {_id: 3, number: 1, par: 3},
-    //             {_id: 4, number: 2, par: 4},
-    //             {_id: 5, number: 3, par: 5},
-    //             {_id: 6, number: 4, par: 4},
-    //             {_id: 7, number: 5, par: 5},
-    //             {_id: 8, number: 6, par: 3},
-    //             {_id: 9, number: 7, par: 4},
-    //             {_id: 10, number: 8, par: 3},
-    //             {_id: 11, number: 9, par: 5},
-    //             {_id: 12, number: 10, par: 4},
-    //             {_id: 13, number: 11, par: 3},
-    //             {_id: 14, number: 12, par: 5},
-    //             {_id: 15, number: 13, par: 4},
-    //             {_id: 16, number: 14, par: 4},
-    //             {_id: 17, number: 15, par: 3},
-    //             {_id: 18, number: 16, par: 3},
-    //             {_id: 19, number: 17, par: 5},
-    //             {_id: 20, number: 18, par: 5},
-    //         ]},
-    //         hole: {_id: 12, number: 10, par: 4}, // current hole
-    //     },
-    },
+        golfer: {}, // logged in golfer
+        golfers: [], // all other golfers
+        courses: [],  // all the courses
+        group: {},
+    }
 }
 
 // action types
@@ -232,10 +88,10 @@ export const addCourse = (course) => {
         isLoading: true
     }
 }
-export const addGolfer = (golfer) => {
+export const addGolfer = (name) => {
     fetch('/register', {
         method: 'post',
-        body: JSON.stringify(golfer),
+        body: JSON.stringify({name}),
         headers: {'Content-Type': 'application/json'}
     })
     .then(res => res.json())
@@ -386,7 +242,7 @@ const scorecard = (state=defaultState, action) => {
         return {
             ...state,
             golfState: {
-                ...golfState,
+                ...state.golfState,
                 golfers: [
                 ...state.golfState.golfers,
                 action.newGolfer

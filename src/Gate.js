@@ -17,7 +17,7 @@ export default function Gate({loginGolfer, addGolfer}) {
             <input type='submit' value='login'/>
             <input type='button' value='register' onClick={event => {
                 event.preventDefault()
-                addGolfer(event.target.name.value)
+                addGolfer(event.target.form[0].value)
             }}/>
         </form>
     )
