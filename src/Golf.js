@@ -47,7 +47,7 @@ export default function Golf(props) {
                     path='/addCourse'
                     render={routeProps => {
                         return (
-                            <GolfAddCourseForm addCourse={props.addCourse}/>
+                            <GolfAddCourseForm {...routeProps} addCourse={props.addCourse}/>
                         )
                     }}
                 />
