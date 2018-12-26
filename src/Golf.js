@@ -10,25 +10,14 @@ import RoundCard from './roundcard/RoundCard';
 export default function Golf(props) {
     const {golfState} = props
     const isLoggedIn = golfState.golfer && golfState.golfer._id
-    console.log(golfState.golfer)
     const isPlayingRound = isLoggedIn && golfState.golfer.currentCourseScore
-    let changingPath
-    if (isLoggedIn) {
-        if (!isPlayingRound) {
-            console.log('not playing round')
-            if (props.location.pathname !== '/clubhouse') {   
-                changingPath = <Redirect to='/clubhouse'/>
-            }
-        }
-    } else {
-        console.log('not logged in')
-        if (props.location.pathname !== '/login') {
-            changingPath = <Redirect to='/login'/>
-        }
-    }
-    console.log(golfState)
+    // page is loading
     return (props.isLoading && <LoadingPage />) ||
-    ( changingPath ||
+    // not logged in or at login page
+    ((!isLoggedIn && (props.location.pathname !== '/login' && <Redirect to='/login'/>)) ||
+    // logged in but not playing round or at clubhouse
+    // not at teetime either
+    ((isLoggedIn && !isPlayingRound) && ((props.location.pathname !== '/clubhouse' && props.location.pathname !== '/teetime') && <Redirect to='/clubhouse'/>)) ||
         (<div className="Golf">
             <GolfNav {...props} />
             <Switch>
