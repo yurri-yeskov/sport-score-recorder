@@ -9,20 +9,9 @@ import RoundCard from './roundcard/RoundCard';
 
 export default function Golf(props) {
     const {golfState} = props
-    console.log(`is loading: ${props.isLoading}`)
-    console.log(`golfer id: ${props.golfState.golfer._id}`)
-    console.log(`current coursescore: ${props.golfState.currentCourseScore}`)
-    console.log(`current path: ${props.location.pathname}`)
-    const notLoggedIn = props.location.pathname !== '/login' && !golfState.golfer._id
     return (props.isLoading && <LoadingPage />) ||
-    ((notLoggedIn && <Redirect to='/login'/>) ||
-    //trying not to go back to login but ends up in clubhouse
-    ((!golfState.golfer.currentCourseScore &&
-         (props.location.pathname !== '/clubhouse' && props.location.pathname !== '/teetime' && props.location.pathname !== '/login')) && 
-        <Redirect to='/clubhouse'/>) 
-        ||
-    (
-        <div className="Golf">
+    (   (props.location.pathname !== '/login' && !golfState.golfer._id && <Redirect to='/login'/>) ||
+        (<div className="Golf">
             <GolfNav {...props} />
             <Switch>
                 <Route exact
@@ -60,6 +49,6 @@ export default function Golf(props) {
                     }}
                 />
             </Switch>
-        </div>
-    ))
+        </div>)
+    )
 }
