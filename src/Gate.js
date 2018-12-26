@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Gate({loginGolfer}) {
+export default function Gate({loginGolfer, addGolfer}) {
     return (
         <form className='Gate' onSubmit={event => {
             event.preventDefault()
@@ -15,7 +15,10 @@ export default function Gate({loginGolfer}) {
                 <input type='text' name='password'/>
             </label>
             <input type='submit' value='login'/>
-            <input type='button' value='register'/>
+            <input type='button' value='register' onClick={event => {
+                event.preventDefault()
+                addGolfer(event.target.name.value)
+            }}/>
         </form>
     )
 }
