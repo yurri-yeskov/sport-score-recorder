@@ -236,7 +236,7 @@ export const deleteCourseScore = (courseScore) => {
 }
 
 // reducer
-const scorecard = (state=defaultState, action) => {
+const scroreRecorder = (state=defaultState, action) => {
     if (!action) {
         return state
     }
@@ -336,7 +336,7 @@ const scorecard = (state=defaultState, action) => {
 }
 
 const store = createStore(
-    scorecard,
+    scroreRecorder,
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
 
